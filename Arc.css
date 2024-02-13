@@ -398,7 +398,10 @@ body:has(.button-toolbar.tabbar-workspace-button.button-menu:hover) #panels-cont
 body:has(.button-toolbar.tabbar-workspace-button.button-menu:hover) #tabs-tabbar-container,
 body:has(.WorkspacePopup) #panels-container,
 body:has(.WorkspacePopup) #tabs-tabbar-container,
-body:has(.WorkspacePopup) .button-toolbar.tabbar-workspace-button.button-menu
+body:has(.WorkspacePopup) .button-toolbar.tabbar-workspace-button.button-menu,
+body:has(.addressfield-popup) #panels-container,
+body:has(.addressfield-popup) #tabs-tabbar-container,
+body:has(.addressfield-popup) .button-toolbar.tabbar-workspace-button.button-menu
 {
     left: 0px !important;
 }
