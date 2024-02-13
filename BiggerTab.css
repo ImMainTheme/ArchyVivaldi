@@ -1,0 +1,56 @@
+:root {
+  --TabbarEleH: 40px;
+}
+.tab-position .tab .tab-header {
+    padding: 5px;
+    flex-basis: var(--TabbarEleH) !important;
+ }
+.tab-audio,
+.tab-position .tab .favicon {
+    min-width: 26px !important;
+    min-height: 26px !important;
+ }
+canvas.audioicon {
+	width: 48px !important; 
+	height: 48px !important
+}
+.tab-position .tab .favicon > img,
+.tab-position .tab .favicon > span > svg {
+	width: 24px !important; 
+	height: 24px !important
+}
+.tab-position .tab .title {
+	margin-left:3px;
+	}
+.tab-position .tab .progress-indicator {
+	right: 3px; 
+	bottom: 1px; 
+	left: 3px;
+	}
+
+#tabs-container .tab-position {
+	Height: var(--TabbarEleH) !important;
+}
+
+#tabs-container.left .ToolbarButton-Button,
+#tabs-container.right .ToolbarButton-Button {
+  height: var(--TabbarEleH);
+}
+#tabs-container .newtab {
+	height: var(--TabbarEleH);
+}
+
+/* Two Level Tab */
+#tabs-subcontainer .tab-position {
+	min-width: var(--TabbarEleH) !important;
+	height: var(--TabbarEleH) !important;
+}
+
+#tabs-subcontainer {
+	min-width: var(--TabbarEleH) !important;
+}
+
+#tabs-subcontainer .newtab {
+	height: var(--TabbarEleH);
+}
+
