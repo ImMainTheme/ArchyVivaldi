@@ -1,0 +1,447 @@
+#browser.win #titlebar {
+    background: var(--colorTabBar);
+	height: 100%;
+}
+
+.win #titlebar #pagetitle > span, .linux:not(.alt) #titlebar #pagetitle > span {
+	width: 0;
+}
+
+/* Mix Tabbar and panel */
+#main > div.inner > div.tabbar-wrapper {
+	position: absolute;
+	height: calc(100% - 85px);
+    top: 85px;
+    width: 256px;
+}
+
+#panels-container {
+	width: 256px !important;
+	height: fit-content;
+	margin-bottom: 5px;
+	min-height: 85px
+}
+#tabs-tabbar-container {
+	width: 256px !important;
+	max-width: 256px;
+}
+
+#switch {
+	flex-basis: 100%;
+    max-width: 100%;
+}
+
+#panels > div.panel-group {
+	left: 0 !important;
+	height: 100vh;
+	max-width: 256px;
+}
+#panels > div.panel-group > .panel-collapse-guard {
+    min-width: 256px !important;
+    max-width: 256px !important;
+}
+#tabs-container.left {
+	min-width: 256px;
+	max-width: 256px;
+}
+#tabs-tabbar-container > button,
+#tabs-container > button {
+	display: none;
+}
+
+#switch > .toolbar-vertical {
+	flex-flow: row wrap;
+	flex-direction: row !important;
+}
+
+#panels-container.left #switch > .toolbar.toolbar-vertical .UrlBar-AddressField {
+	max-width: 100%;
+    transform: unset;
+	height: 40px;
+    max-height: 40px;
+	justify-content: center;
+	margin: unset;
+}
+#switch > div > div.UrlBar-AddressField.button-textonly.right > div.UrlBar-UrlFieldWrapper > div > div.OmniDropdown {
+	transform: none !important;
+    rotate: none !important;
+    min-width: auto !important;
+}
+#switch > div > div.UrlBar-AddressField.button-textonly.right > div.toolbar.toolbar-small.toolbar-insideinput > div.button-toolbar.drop-down-menu,
+#switch > div > div.UrlBar-AddressField.button-textonly.right > div:nth-child(1) > div {
+	display: none;
+}
+
+
+
+.toolbar.toolbar-droptarget.toolbar-statusbar.toolbar-medium {
+	max-height: 18px;
+	background: var(--colorTabBar);
+	overflow: hidden;
+}
+
+
+#titlebar > button.vivaldi {
+	display: none;
+}
+
+#switch .toolbar-extensions {flex-direction: row !important;}
+/* comfirm no scrollbar on panel */
+.toolbar.toolbar-droptarget.toolbar-panel.toolbar-medium.toolbar-vertical {
+	height: 79px !important;
+}
+
+.toolbar > .StatusInfo {
+	justify-content: center;
+}
+
+.tab-strip {
+	margin: 0 1% 0 1% !important;
+}
+
+/* Fix weird enlarge */
+#switch > div {
+	width: 255.7px !important;
+}
+
+/* UrlBar.css */
+.UrlBar-UrlField{
+	text-align: center;
+}
+.UrlField{
+    display: flex;
+    justify-content: center;
+}
+
+/* CurvedFrame.css */
+#browser:not(.fullscreen) #webpage-stack {
+    /* change color (last parameter) to your preferred color */
+    box-shadow: 0 0 0 1rem var(--colorTabBar); 
+    border-radius: 0.75rem;
+    margin: 0 0.75rem 0rem 0.75rem;
+}
+
+
+#browser:not(.fullscreen) #webpage-stack::before {
+    content: '';
+    position: absolute;
+    width: .75rem;
+    height: .75rem;
+    background-color: var(--colorTabBar);
+    -webkit-mask-image: radial-gradient(circle at 0 0, rgba(0, 0, 0, 0) 70%, #000 73%);
+    transform: rotate(180deg);
+    z-index: 1;
+}
+
+#browser:not(.fullscreen) #webpage-stack::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: .75rem;
+    height: .75rem;
+    background-color: var(--colorTabBar);
+    -webkit-mask-image: radial-gradient(circle at 0 0, rgba(0, 0, 0, 0) 70%, #000 73%);
+    transform: rotate(-90deg);
+    z-index: 1;
+    top: 0;
+    right: 0;
+}
+
+.panel-group {
+    margin-bottom: .5rem;
+}
+
+.panel-group::before {
+    content: '';
+    position: absolute;
+    width: .75rem;
+    height: .75rem;
+    background-color: var(--colorTabBar);
+    -webkit-mask-image: radial-gradient(circle at 0 0, rgba(0, 0, 0, 0) 70%, #000 73%);
+    transform: rotate(180deg);
+}
+
+.panel-group::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: .75rem;
+    height: .75rem;
+    background-color: var(--colorTabBar);
+    -webkit-mask-image: radial-gradient(circle at 0 0, rgba(0, 0, 0, 0) 70%, #000 73%);
+    transform: rotate(90deg);
+}
+
+.webpanel-content {
+    border-top-left-radius: .75rem;
+}
+
+/* Mac Button */
+body {
+    border-radius: 0;
+}
+
+.win.normal #tabs-tabbar-container.top {
+    padding-top: 5px;
+}
+
+/* Layout of buttons */
+#browser.win .window-buttongroup button svg {
+    display: block;
+    z-index: 2;
+    fill: black;
+    opacity: 0.75;
+	height: 9px !important;
+	width: 9px !important;
+	position: absolute;
+    top: 150%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	transition: top 200ms ease-in-out !important;
+	opacity: 0;
+}
+
+#browser.win .window-buttongroup button {
+    margin-left: 5px;
+	margin-right: 5px;
+    position: relative; /* Add this line */
+}
+#browser.win .window-buttongroup {
+  padding: 0px 5px 0px 5px !important;
+  background: none !important;
+}
+
+.stacks-off.fullscreen#browser.win .window-buttongroup,
+.tabs-at-edge#browser.win .window-buttongroup {
+    margin: 0;
+    padding-top: 3px;
+}
+#browser.win .window-buttongroup button,
+#browser.win .window-buttongroup button.window-close {
+	height: 14px !important;
+    width: 14px !important;
+	border-radius: 100%;
+	opacity: 0.6;
+    background-color: #A6A6A6;
+}
+:not(.fullscreen).hasfocus#browser.win .window-buttongroup button.window-minimize,
+#browser.win .window-buttongroup:hover button.window-minimize{
+	background-color: #fac536 !important;
+	opacity: 1;
+}
+.hasfocus#browser.win .window-buttongroup button.window-maximize,
+#browser.win .window-buttongroup:hover button.window-maximize{
+	background: #39ea49 !important;
+	opacity: 1;
+
+}
+.hasfocus#browser.win .window-buttongroup button.window-close,
+#browser.win .window-buttongroup:hover button.window-close{
+	background: #f25056 !important;
+	opacity: 1;
+
+}
+
+/* Animation */
+#browser.win .window-buttongroup button:hover svg {
+    top: 50% !important;   
+	opacity: 1;
+}
+
+#browser.win .window-buttongroup{
+	visibility: visible !important;
+	display: flex !important;
+	position: absolute !important;
+	top: 50% !important;
+	left: unset !important;
+	right: 0 !important;
+	padding-top: 4px !important;
+	padding-bottom: 4px !important;
+	padding-right: 10px !important;
+	padding-left: 4px !important;
+	height: auto !important;
+	transform: translateY(-60%);
+}
+
+/* button pin tab */
+.tab-position.is-pinned {
+	display: inline-block;
+	margin: 2% 2.3% 2% 2.3%;
+	width: 20% !important;
+    position: relative;
+    transform: unset !important;
+}
+
+.tab-position.is-pinned .tab-header {
+    justify-content: center;
+    padding: unset;
+}
+
+#tabs-container .tab-position.is-pinned .tab-header .title {
+    display: none;
+}
+
+#tabs-container > div.resize > div > div.separator {
+    position: relative;
+    transform: unset;
+}
+
+#tabs-container .tab-position:not(.is-pinned) {
+	position: relative;
+	transform: unset !important;
+	margin: 2px 0;
+}
+
+#tabs-container .newtab {
+	top: unset !important;
+	left: unset !important;
+	width: 100%;
+	transform: unset !important;
+	display: flex;
+	justify-content: center;
+}
+
+/* Two-Level Tab */
+#tabs-subcontainer {
+    background: var(--colorTabBar) !important;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    min-width: 0 !important;
+    opacity: 0;
+    transition-delay: 150ms !important;
+    transition-property: min-width, opacity;
+    transition-duration: 250ms !important;
+}
+.tab-position.is-substack > div > svg, svg.svg-tab-stack{
+    display: none;
+}
+body:has(.tab-position.is-substack:hover) #tabs-subcontainer,
+#tabs-subcontainer:hover {
+    min-width: 214px !important;
+    opacity: 1;
+}
+
+#tabs-subcontainer .tab-position {
+	position: relative;
+	transform: unset !important;
+	min-width: 30px;
+	width: 214px !important;
+	margin: 2px 0;
+}
+#tabs-subcontainer .newtab {
+	top: unset !important;
+	left: unset !important;
+	width: 100%;
+	transform: unset !important;
+	justify-content: center;
+}
+#tabs-subcontainer > .tab-strip {
+	display: flex;
+	flex-direction: column !important;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+/* Fix dragging indicator */
+.toolbar.toolbar-vertical .button-dragover-bottom:after {
+    bottom: unset;
+    transform: rotate(90deg);
+    right: -5px;
+}
+.toolbar.toolbar-vertical .button-dragover-top:after {
+    top: unset;
+    transform: rotate(90deg);
+    left: -5px;
+}
+
+/* Floating top urlbar */
+#main > div.mainbar > div > div.UrlBar-AddressField {
+    position:absolute; width: 60%; transform: scaleY(1) translateY(4px); opacity: 1; height: 40px;
+}
+
+body:has(#header:not(:hover)) #main > div.mainbar > div > div.UrlBar-AddressField:not(:focus-within):not(:hover) {
+    margin-top: -44px; transition: margin-top 0ms 500ms !important;
+}
+
+div#panels-container {background: var(--colorTabBar);}
+
+.fullscreen #panels-container {
+	visibility: hidden;
+}
+
+/* On/Off floating tabbar+panel */
+:not(.fullscreen)#panels-container.switcher #switch {
+	visibility: unset;
+}
+
+body:has(#panels-container.switcher) #tabs-tabbar-container,
+body:has(#panels-container.switcher) #panels-container,
+body:has(#panels-container.switcher) .button-toolbar.tabbar-workspace-button.button-menu {
+    left: calc(0.75rem - 256px);
+	transition: left 250ms ease-in-out !important;
+}
+#tabs-tabbar-container,#panels-container {z-index: 1;}
+#panels-container:hover, 
+#tabs-tabbar-container:hover,
+body:has(#panels-container:hover) #tabs-tabbar-container,
+body:has(#tabs-tabbar-container:hover) #panels-container,
+body:has(.panel.panel-bookmarks) #panels-container,
+body:has(.panel.panel-bookmarks) #tabs-tabbar-container,
+body:has(.panel-collapse-guard.panel.downloads) #panels-container,
+body:has(.panel-collapse-guard.panel.downloads) #tabs-tabbar-container,
+body:has(.extensionIconPopupMenu) #panels-container,
+body:has(.extensionIconPopupMenu) #tabs-tabbar-container,
+.button-toolbar.tabbar-workspace-button.button-menu:hover,
+body:has(#panels-container:hover) .button-toolbar.tabbar-workspace-button.button-menu,
+body:has(#tabs-tabbar-container:hover) .button-toolbar.tabbar-workspace-button.button-menu,
+body:has(.extensionIconPopupMenu) .button-toolbar.tabbar-workspace-button.button-menu,
+body:has(.button-toolbar.tabbar-workspace-button.button-menu:hover) #panels-container,
+body:has(.button-toolbar.tabbar-workspace-button.button-menu:hover) #tabs-tabbar-container,
+body:has(.WorkspacePopup) #panels-container,
+body:has(.WorkspacePopup) #tabs-tabbar-container,
+body:has(.WorkspacePopup) .button-toolbar.tabbar-workspace-button.button-menu
+{
+    left: 0px !important;
+}
+
+/* Need bookmark bar on bottom + icon only + put all bookmarks into one folder */
+.bookmark-bar.icon {
+    height: 18px;
+    max-height: 18px;
+    position: fixed;
+    min-width: 32px;
+    max-width: 32px;
+    bottom: 0px;
+    border: unset;
+}
+
+.bookmark-bar.icon .observer {
+    padding: unset !important;
+    margin: unset;
+}
+
+.bookmark-bar.icon .observer .bookmarkbarItem.folder {
+    background: var(--colorTabBar) !important;
+}
+
+svg.folder-icon {
+    height: 20px !important;
+    width: 20px !important;
+}
+
+#browser > footer {
+    width: calc(100% - 32px);
+    left: 32px;
+}
+.button-toolbar.tabbar-workspace-button.button-menu {
+	width: 256px !important;
+}
+.button-toolbar.tabbar-workspace-button.button-menu > button {
+	margin: unset !important;
+	border-radius: 0 !important;
+	opacity: 1 !important;
+	background: var(--colorTabBar) !important;
+}
+
+body:has(.ToolbarButtonPopup-DefaultStyles .WorkspacePopup) .ToolbarButtonPopup-DefaultStyles {
+	left: 0px !important;
+}
