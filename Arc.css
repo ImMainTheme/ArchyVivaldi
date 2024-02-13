@@ -405,8 +405,6 @@ body:has(#tabs-tabbar-container:hover) .button-toolbar.tabbar-workspace-button.b
 body:has(.extensionIconPopupMenu) .button-toolbar.tabbar-workspace-button.button-menu,
 body:has(.button-toolbar.tabbar-workspace-button.button-menu:hover) #panels-container,
 body:has(.button-toolbar.tabbar-workspace-button.button-menu:hover) #tabs-tabbar-container,
-body:has(.button-toolbar.tabbar-workspace-button.button-menu > button:hover) #panels-container,
-body:has(.button-toolbar.tabbar-workspace-button.button-menu > button:hover) #tabs-tabbar-container,
 body:has(.WorkspacePopup) #panels-container,
 body:has(.WorkspacePopup) #tabs-tabbar-container,
 body:has(.WorkspacePopup) .button-toolbar.tabbar-workspace-button.button-menu,
@@ -445,11 +443,6 @@ body:has(.addressfield-popup) .button-toolbar.tabbar-workspace-button.button-men
 }
 .button-toolbar.tabbar-workspace-button.button-menu {
 	width: 256px !important;
-}
-.button-toolbar.tabbar-workspace-button.button-menu > button {
-	margin: unset !important;
-	border-radius: 0 !important;
-	background: var(--colorTabBar) !important;
 }
 
 body:has(.ToolbarButtonPopup-DefaultStyles .WorkspacePopup) .ToolbarButtonPopup-DefaultStyles {
