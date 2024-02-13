@@ -16,12 +16,14 @@
 }
 
 #panels-container {
+	border-top-right-radius: 0.75rem;
 	width: 256px !important;
 	height: fit-content;
 	margin-bottom: 5px;
 	min-height: 85px
 }
 #tabs-tabbar-container {
+	border-bottom-right-radius: 0.75rem;
 	width: 256px !important;
 	max-width: 256px;
 }
@@ -116,9 +118,9 @@
 /* CurvedFrame.css */
 #browser:not(.fullscreen) #webpage-stack {
     /* change color (last parameter) to your preferred color */
-    box-shadow: 0 0 0 1rem var(--colorTabBar); 
+    box-shadow: 0 0 0 2rem var(--colorTabBar); 
     border-radius: 0.75rem;
-    margin: 0 0.75rem 0rem 0.75rem;
+    margin: 0 .75rem 0rem .75rem;
 }
 
 
@@ -374,10 +376,19 @@ div#panels-container {background: var(--colorTabBar);}
 }
 
 body:has(#panels-container.switcher) #tabs-tabbar-container,
-body:has(#panels-container.switcher) #panels-container,
+body:has(#panels-container.switcher) #panels-container{
+	left: calc(0.75rem - 256px);
+	opacity: 0;
+    transition: left 250ms ease-in-out, opacity 250ms linear !important;
+
+}
 body:has(#panels-container.switcher) .button-toolbar.tabbar-workspace-button.button-menu {
-    left: calc(0.75rem - 256px);
+	left: calc(0.75rem - 256px);
 	transition: left 250ms ease-in-out !important;
+}
+body:has(#panels-container.switcher) .button-toolbar.tabbar-workspace-button.button-menu > button {
+	opacity: 0;
+	transition: opacity 250ms linear !important;
 }
 #tabs-tabbar-container,#panels-container {z-index: 1;}
 #panels-container:hover, 
@@ -404,6 +415,21 @@ body:has(.addressfield-popup) #tabs-tabbar-container,
 body:has(.addressfield-popup) .button-toolbar.tabbar-workspace-button.button-menu
 {
     left: 0px !important;
+	opacity: 1 !important;
+}
+.button-toolbar.tabbar-workspace-button.button-menu > button:hover,
+body:has(#panels-container:hover) .button-toolbar.tabbar-workspace-button.button-menu  > button,
+body:has(#tabs-tabbar-container:hover) .button-toolbar.tabbar-workspace-button.button-menu > button,
+body:has(.extensionIconPopupMenu) .button-toolbar.tabbar-workspace-button.button-menu  > button,
+body:has(.WorkspacePopup) .button-toolbar.tabbar-workspace-button.button-menu  > button,
+body:has(.addressfield-popup) .button-toolbar.tabbar-workspace-button.button-menu  > button,
+.button-toolbar.tabbar-workspace-button.button-menu > button:hover > span
+{
+	opacity: 1 !important;
+}
+
+.button-toolbar.tabbar-workspace-button.button-menu > button > span {
+	opacity: 0.8;
 }
 
 /* Need bookmark bar on bottom + icon only + put all bookmarks into one folder */
@@ -437,7 +463,6 @@ body:has(.addressfield-popup) .button-toolbar.tabbar-workspace-button.button-men
 .button-toolbar.tabbar-workspace-button.button-menu > button {
 	margin: unset !important;
 	border-radius: 0 !important;
-	opacity: 1 !important;
 	background: var(--colorTabBar) !important;
 }
 
@@ -447,4 +472,20 @@ body:has(.ToolbarButtonPopup-DefaultStyles .WorkspacePopup) .ToolbarButtonPopup-
 
 #main > div.bookmark-bar.icon > div > button > svg > g > svg > path {
 	d: path("M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z")
+}
+
+/* Floating Page tiling */
+#main > div.mainbar > div > div.button-toolbar.tilingtoggle {
+    display: flex !important;
+    position: absolute;
+	right: 0.75rem;
+    background-color: var(--colorTabBar);
+	transform: translateY(17px)
+}
+#main > div.mainbar > div > div.button-toolbar.tilingtoggle,
+#main > div.mainbar > div > div.button-toolbar.tilingtoggle > button {
+    border-radius: 0.4rem !important;
+}
+body:has(#header:not(:hover)) #main > div.mainbar > div > div.button-toolbar.tilingtoggle:not(:focus-within):not(:hover) {
+    margin-top: -68px; transition: margin-top 0ms 500ms !important;
 }
