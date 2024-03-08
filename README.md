@@ -27,6 +27,7 @@
 | Bookmarks |1. Check Show Bookmark Bar |
 | Appearance | Set custom ui modifications folder as you like |
 
+3. Goto vivaldi://experiments/ and check Allow CSS modifications
 
 When everything complete, your vivaldi should look like this
 ![image](https://raw.githubusercontent.com/ImMainTheme/ArchyVivaldi/main/src/after_setting.png)
@@ -35,3 +36,11 @@ When everything complete, your vivaldi should look like this
 Then you can download the arc.css and put it to your custom ui modifications folder.
 </details>
 
+<details>
+<summary>How to install:</summary>
+
+1. download archy.css and put it in your custom ui modifications folder
+2. download brightVivaltheme.zip and darkbluetheme.zip, goto Vivaldi Settings -> open theme -> import those 2 zips
+3. Choose the theme between brightVivaltheme and darkbluetheme
+
+</details>
