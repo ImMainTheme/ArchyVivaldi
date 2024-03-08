@@ -83,6 +83,8 @@ input#urlFieldInput {text-align:center;}
 	padding: 0 !important;
 }
 /* button pin tab */
+.tab-position.is-pinned .tab {background-color: var(--colorImageBgAlphaHeavy, var(--colorBgAlphaHeavier)); }
+.tab-position span.title {color: var(--colorFg);}
 .tab-position.is-pinned,
 #tabs-container > .resize > .tab-strip .tab-yield-space {
 	min-width: calc(var(--biggertab) - 4%);
