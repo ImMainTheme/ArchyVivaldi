@@ -35,6 +35,7 @@ span.UrlFragment--Lowlight.UrlFragment-Link {
 	button {visibility:hidden;width:0;border:0;}
 }
 .UrlFragment--Lowlight.UrlFragment-HostFragment-Subdomain {color: var(--HighlightColor);}
+.BookmarkButton--Active {background: transparent;}
 /**/
 button.vivaldi {width: 34px;}
 button.vivaldi span.expand-arrow {display: none;}
