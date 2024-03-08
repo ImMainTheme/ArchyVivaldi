@@ -29,9 +29,10 @@ span.UrlFragment--Lowlight.UrlFragment-Link {
     max-width: fit-content;
     background: transparent;
     border: none;
-	.UrlFragments.UrlFragment-Wrapper.UrlFragment-Wrapper--ShouldHighlight,.UrlField--IsEmpty .UrlFragment-Wrapper, .UrlField--HasEditText .UrlFragment-Wrapper{opacity: 1;}
+	.UrlFragments.UrlFragment-Wrapper.UrlFragment-Wrapper--ShouldHighlight{padding:0;opacity: 1;}
+	.UrlField--IsEmpty .UrlFragment-Wrapper, .UrlField--HasEditText .UrlFragment-Wrapper{opacity: 1;}
 	input#urlFieldInput {opacity: 0;}
-	button {visibility:hidden;}
+	button {visibility:hidden;width:0;border:0;}
 }
 .UrlFragment--Lowlight.UrlFragment-HostFragment-Subdomain {color: var(--HighlightColor);}
 /**/
@@ -41,12 +42,11 @@ button.vivaldi span.expand-arrow {display: none;}
 	background-color: var(--colorTabBar);
 	border-bottom: unset !important;
 }
-.UrlBar-AddressField.button-textonly {
-	height: 28px;
-}
+.UrlBar-AddressField.button-textonly {height: 28px;}
 /* Url text on center */
 .UrlField {justify-content: center;}
 input#urlFieldInput {text-align:center;}
+.UrlBar-UrlObfuscationWarning {-webkit-app-region: no-drag !important;}
 
 #browser:has(.switcher):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(4)[class="button-toolbar toolbar-spacer"],
 #browser:has(.switcher):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(4)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
