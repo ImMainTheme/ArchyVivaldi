@@ -7,9 +7,7 @@
 | | |
 
 <details>
-<summary>
-### Settings need to change before applying css:
-</summary>
+<summary>Settings need to change before applying css:</summary>
 
 
 1. Toolbar Edit (right click on any toolbar -> Customize Toolbar)
