@@ -14,7 +14,7 @@
 
 | Category | Options |
 | --- | --- |
-| Address Bar |Put the following item in sequence:<br>Panel Toggle<br>Space<br>Back<br>Forward<br>Reload<br>Flexible Space<br>AddressField<br>Flexible Space<br>Page Tiling<br>Extensions|
+| Address Bar |Put the following item in sequence:<br><code>Panel Toggle // Space // Back // Forward // Reload // Flexible Space // AddressField // Flexible Space // Page Tiling // Extensions</code>|
 | Status Bar |Put address bar's downloads on left (panel's download don't work on Archy)|
 
 2. Vivaldi settings (Gear icon)
@@ -25,7 +25,7 @@
 | Panel |1. Left<br>2. Check Floating Panel<br>3. Uncheck auto-close Inactive Panel|
 | Address Bar |1. Top<br>2. Check Hidden Extensions to drop-down menu|
 | Bookmarks |1. Check Show Bookmark Bar |
-| Appearance | Set custom ui modifications folder as you like |
+| Appearance |1. Set custom ui modifications folder as you like<br>2. User Interface Zoom 100% (only work at 100% right now)|
 
 3. Goto vivaldi://experiments/ and check Allow CSS modifications
 
