@@ -1,0 +1,374 @@
+:root {
+	--leftbarwidth: calc(6 * 32px + var(--browserborder) + var(--browserborder)); /* default is 4 status bar button + bookmarks + workspaces, adjust this for your best view */
+	--browserborder: 6px; /* change this if you want to change border size */
+	--biggertab: 40px;
+	--lightgradient: linear-gradient(#C9CEE1, #EEB7CA);
+	--darkgradient: linear-gradient(#3a415b, #505050);
+}
+
+.transparent-tabbar.theme-id-ccf1c7b4-2d19-415f-9ef4-9b24d4df0253,
+.transparent-tabbar.theme-id-ccf1c7b4-2d19-415f-9ef4-9b24d4df0253 .tabbar-wrapper > .tabbar-wrapper{
+	background-image: var(--lightgradient) !important;
+}
+.transparent-tabbar.theme-id-6daae12c-c28f-462a-9f56-4755ea72948e,
+.transparent-tabbar.theme-id-6daae12c-c28f-462a-9f56-4755ea72948e .tabbar-wrapper > .tabbar-wrapper{
+	background-image: var(--darkgradient) !important;
+}
+
+/* top bar */
+/*more arc*/
+.mainbar > *,
+.window-buttongroup.on-mainbar {
+    height: 34px !important;
+    min-height: 34px !important;
+}
+span.UrlFragment--Lowlight.UrlFragment-Link {
+    display: none;
+}
+.UrlBar-AddressField.button-textonly.below:not(:focus-within) {
+    max-width: fit-content;
+    background: transparent;
+    border: none;
+	.UrlFragments.UrlFragment-Wrapper.UrlFragment-Wrapper--ShouldHighlight{padding:0;opacity: 1;}
+	.UrlField--IsEmpty .UrlFragment-Wrapper, .UrlField--HasEditText .UrlFragment-Wrapper{opacity: 1;}
+	input#urlFieldInput {opacity: 0;}
+	button {visibility:hidden;width:0;border:0;}
+}
+.UrlFragment--Lowlight.UrlFragment-HostFragment-Subdomain {color: var(--HighlightColor);}
+.BookmarkButton--Active {background: transparent;}
+/**/
+button.vivaldi {width: 34px;}
+button.vivaldi span.expand-arrow {display: none;}
+.mainbar {
+	background-color: var(--colorTabBar);
+	border-bottom: unset !important;
+}
+.UrlBar-AddressField.button-textonly {height: 28px;}
+/* Url text on center */
+.UrlField {justify-content: center;}
+input#urlFieldInput {text-align:center;}
+.UrlBar-UrlObfuscationWarning {-webkit-app-region: no-drag !important;}
+
+#browser:has(.switcher):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(5)[class="button-toolbar toolbar-spacer"],
+#browser:has(.switcher):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(5)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
+	max-width: 0px;
+}
+#browser:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(5)[class="button-toolbar toolbar-spacer"],
+#browser:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(5)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
+	min-width: calc(var(--leftbarwidth) - 34px - 56px - 34px)
+}
+/* left tab bar */
+#tabs-container {
+	min-width: var(--leftbarwidth);
+	max-width: var(--leftbarwidth);
+	padding: var(--browserborder) var(--browserborder) 0 var(--browserborder);
+}
+.tabbar-wrapper > .tabbar-wrapper {
+	border-top-right-radius: var(--radiusHalf);
+	border-bottom-right-radius: var(--radiusHalf);
+	min-width: var(--leftbarwidth);
+	max-width: var(--leftbarwidth);
+	height: calc(100% - var(--browserborder) + 1px) !important;
+	overflow: hidden;
+}
+#browser:not(:has(#panels-container.switcher)) .tabbar-wrapper > .tabbar-wrapper{
+	box-shadow: var(--colorTabBar) 0 calc(var(--leftbarwidth) * 1.5);
+}
+#tabs-container > .resize > .tab-strip > .separator,
+#tabs-container > .resize > .tab-strip .tab-yield-space {
+	z-index: 1;
+}
+#tabs-tabbar-container {
+	padding: 0 !important;
+}
+/* button pin tab */
+.tab-position.is-pinned .tab {background-color: var(--colorImageBgAlphaHeavy, var(--colorBgAlphaHeavier)); }
+.tab-position span.title {color: var(--colorFg);}
+.tab-position.is-pinned,
+#tabs-container > .resize > .tab-strip .tab-yield-space {
+	min-width: calc(var(--biggertab) - 4%);
+	flex: 1 1 32%;
+	margin: .5% 0;
+	transform: unset !important;
+	position: relative;
+}
+.tab-strip {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	column-gap: 2%;
+}
+#tabs-container .tab-position.is-pinned .tab-header .title {
+    display: none;
+}
+.tab-position.is-pinned .tab-header {
+    justify-content: center;
+    padding: unset;
+}
+#tabs-container > .resize > div > .separator {
+    position: relative;
+    transform: unset;
+}
+#tabs-container .tab-position:not(.is-pinned) {
+	position: relative;
+	transform: unset !important;
+	margin-bottom: 1%;
+}
+#tabs-container .newtab {
+	top: unset !important;
+	left: unset !important;
+	transform: unset !important;
+	justify-content: center;
+	width: var(--leftbarwidth);
+}
+button.ToolbarButton-Button[title="Open a New Tab"]:after {content: "New Tab";color: var(--colorFg);width: calc(100% - 28px);}
+#tabs-tabbar-container > button,
+#tabs-container > button {
+	display: none;
+}
+/* QOL */
+/* not pinned tab audio button */
+/* .tab-position:not(.is-pinned) .tab-audio {top: 12px !important;} */
+.tab-position:not(.is-pinned) {
+	.tab-audio {position: relative !important;top: 0 !important;order: 0;margin-right:5px;color:var(--colorFg);}
+	.title{position: relative !important;order: 1;}
+	.close{position: relative !important;order: 1;}
+	.favicon{transform:unset !important;}
+}
+/* other QOL */
+.tab-position.is-pinned .tab-audio {top: 0 !important;}
+.tab-position .tab,button.ToolbarButton-Button[title="Open a New Tab"]:after {font-size: 14px;}
+.tab-position:not(.toolbar):not(.is-pinned) {order: 1;}
+.toolbar.toolbar-tabbar.toolbar-large.tab-position {order: 0;}
+/* Seperator */
+:has(.tab-position.is-pinned) .toolbar.toolbar-tabbar.toolbar-large.tab-position {margin-top: 20px;}
+:has(.tab-position.is-pinned) .toolbar.toolbar-tabbar.toolbar-large.tab-position:before {content: '';width: 90%;position: absolute;top: -11px;border-top: 2px solid var(--colorFgAlpha);left: 5%;}
+/* Rubbish bin*/
+.button-toolbar.toggle-trash {height: 28px;}
+.sync-and-trash-container {margin: 0 auto 1px 0 !important;justify-content: unset !important;scale:1.07;}
+/* bigger tab and fav icon */
+.tab-position .tab .tab-header {
+    flex-basis: var(--biggertab) !important;
+}
+.tab-position:not(.is-pinned) .tab .tab-header > .favicon {min-width: 28px;}
+.tab-position:not(.is-pinned) .tab .tab-header > .title {padding:0;}
+#tabs-container .ToolbarButton-Button {
+  height: var(--biggertab);
+}
+#tabs-container .tab-position:not(.accordion-toggle-arrow) {
+	height: var(--biggertab) !important;
+}
+#tabs-container .newtab {
+	height: var(--biggertab);
+}
+/* workspace icononly */
+.tabbar-workspace-button {
+	position: absolute;
+	padding: 0 6px;
+	right: var(--browserborder);
+	bottom: 1px;
+	width: 32px !important;
+	height: 28px !important;
+	z-index: 5;
+	background-color: transparent !important;
+}
+.button-toolbar.workspace-popup.tabbar-workspace-button button:hover {
+	background-color: transparent !important;
+}
+.tabbar-workspace-button > button > .button-title,  .tabbar-workspace-button > button > .button-toolbar-menu-indicator {
+	display: none;
+}
+#browser:has(.WorkspacePopup) .ToolbarButtonPopup-DefaultStyles {
+	top: unset !important;
+	bottom: calc(var(--browserborder) + 34px) !important;
+}
+#browser:has(.WorkspacePopup) .button-popup-pos-below:before {
+	top: unset;
+	bottom: -12px;
+	transform: rotate(180deg);
+}
+.bookmarkbarItem.chevron {
+	margin-left: -3px !important;
+}
+/* floating tabs using panel toggle*/
+#browser:has(.switcher):not(.toolbar-edit-mode) {
+	.tabbar-wrapper > .tabbar-wrapper, .bookmarkbarItem.chevron, .tabbar-workspace-button {
+		transition-duration: 3000ms !important;
+		transition-property: left, right, opacity !important;
+		transition-delay: 300ms !important;
+	}
+	.tabbar-wrapper > .tabbar-wrapper, .bookmarkbarItem.chevron:not(.highlighted) {
+		left: calc(var(--browserborder) - var(--leftbarwidth));
+		z-index: 1;
+		opacity: 0;
+	}
+	.tabbar-workspace-button {
+		opacity: 0;
+	}
+	.toolbar-statusbar {
+		left: calc(32px + var(--browserborder) - var(--leftbarwidth));
+		color: transparent;
+		transition-duration: 300ms !important;
+		transition-property: left, color !important;
+		transition-delay: 300ms !important;
+	}
+}
+#browser:has(.switcher) .tabbar-wrapper > .tabbar-wrapper:hover,
+#browser:has(.switcher):has(.WorkspacePopup) .tabbar-wrapper > .tabbar-wrapper,
+#browser:has(.switcher):has(.bookmarkbarItem.chevron.highlighted) .tabbar-wrapper > .tabbar-wrapper,
+#browser:has(.switcher):has(.toolbar-statusbar:hover) .tabbar-wrapper > .tabbar-wrapper,
+#browser:has(.switcher):has(.download-popout) .tabbar-wrapper > .tabbar-wrapper,
+#browser:has(.switcher):has(.tabbar-wrapper > .tabbar-wrapper:hover) .bookmarkbarItem.chevron,
+#browser:has(.switcher):has(.WorkspacePopup) .bookmarkbarItem.chevron,
+#browser:has(.switcher) .bookmarkbarItem.chevron.highlighted,
+#browser:has(.switcher):has(.toolbar-statusbar:hover) .bookmarkbarItem.chevron,
+#browser:has(.switcher):has(.download-popout) .bookmarkbarItem.chevron{
+	left: 0 !important;
+	opacity: 1 !important;
+	transition-delay: 0ms !important;
+}
+#browser:has(.switcher):has(.tabbar-wrapper > .tabbar-wrapper:hover) .tabbar-workspace-button,
+#browser:has(.switcher):has(.WorkspacePopup) .tabbar-workspace-button,
+#browser:has(.switcher):has(.bookmarkbarItem.chevron.highlighted) .tabbar-workspace-button,
+#browser:has(.switcher):has(.toolbar-statusbar:hover) .tabbar-workspace-button,
+#browser:has(.switcher):has(.download-popout) .tabbar-workspace-button{
+	opacity: 1 !important;
+	transition-delay: 0ms !important;
+}
+/*
+#browser:has(.switcher):has(.tabbar-wrapper > .tabbar-wrapper:hover) .toolbar-statusbar,
+#browser:has(.switcher):has(.WorkspacePopup) .toolbar-statusbar,
+#browser:has(.switcher):has(.bookmarkbarItem.chevron.highlighted) .toolbar-statusbar,
+#browser:has(.switcher) .toolbar-statusbar:hover,
+#browser:has(.switcher):has(.download-popout) .toolbar-statusbar {
+	left: calc(var(--browserborder) + 32px) !important;
+	color: var(--colorFg) !important;
+	transition-delay: 0ms !important;
+}
+/* right bar */
+/* no panels */
+#panels-container {
+	display: none;
+}
+/* extension icon to right *//*
+#browser:has(.button-toolbar.extensionPopupIcons) .toolbar-extensions {
+	position: absolute;
+	right: -34px;
+	opacity: 0;
+	top: 100%;
+	transition-duration: 300ms !important;
+	transition-property: right, opacity !important;
+	transition-delay: 300ms !important;
+	padding-right: var(--browserborder);
+}
+#browser:has(.button-toolbar.extensionPopupIcons) .toolbar-extensions:hover,
+#browser:has(.button-toolbar.extensionPopupIcons):has(.extensionIconPopupMenu) .toolbar-extensions {
+	right:0;
+	opacity: 1;
+	transition-delay: 0ms !important;
+}
+/* bottom bar */
+.bookmark-bar {
+	left: calc(var(--leftbarwidth) / 2 - 16px);
+	height: 28px !important;
+	position: fixed;
+	min-width: 32px;
+	max-width: 32px;
+	bottom: calc(var(--browserborder) - 1px);
+	border: unset;
+	visibility: collapse;
+	z-index: 2;
+}
+.bookmark-bar .observer button {
+	visibility: visible;
+}
+.bookmark-bar .observer .bookmarkbarItem {
+    background: var(--colorTabBar) !important;
+	width: 32px;
+    justify-content: center;
+	background-color: transparent !important;
+}
+.bookmarkbarItem > svg > path {
+	d: path("M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z")
+}
+/* Hide Status Bar too, if u need status info just put it there */
+#browser:not(.toolbar-edit-mode) .toolbar-statusbar {
+	position: absolute;
+	bottom: var(--browserborder);
+	width: 0;
+	/* width: calc(var(--leftbarwidth) - 60px - var(--browserborder) - var(--browserborder)); */
+}
+.toolbar-statusbar {
+	left: calc(32px + var(--browserborder));
+}
+
+#browser:not(.toolbar-edit-mode):not(:has(#panels-container.switcher)) .button-textonly.StatusInfo {
+	left: calc(var(--leftbarwidth));
+	width: calc(100% - var(--leftbarwidth) - var(--browserborder));
+	bottom: var(--browserborder);
+	position: fixed;
+	visibility: collapse;
+}
+#browser:not(.toolbar-edit-mode):has(#panels-container.switcher) .button-textonly.StatusInfo {
+	left: var(--browserborder);
+	width: calc(100% - var(--browserborder) * 2);
+	bottom: var(--browserborder);
+	position: fixed;
+	visibility: collapse;
+}
+#browser:not(.toolbar-edit-mode) .button-textonly.StatusInfo {
+	justify-content: center;
+	font-size: 12px;
+	z-index: -1;
+}
+.StatusInfo-Content {
+	padding: 2px;
+	background: var(--colorBg);
+	border-radius: var(--radiusHalf);
+	visibility: visible;
+	color: var(--colorFg) !important;
+	pointer-events: none;
+}
+/* CurvedFrame.css */
+#browser:not(.fullscreen) #webpage-stack {
+    /* change color (last parameter) to your preferred color */
+    box-shadow: 0 0 0 calc(var(--browserborder) * 2) var(--colorTabBar); 
+	border-radius: var(--radiusHalf);
+	margin-bottom: var(--browserborder);
+	margin-right: var(--browserborder);
+}
+#browser:not(.fullscreen) #webpage-stack::before {
+    content: '';
+    position: absolute;
+    width: var(--radiusHalf);
+    height: var(--radiusHalf);
+    background-color: var(--colorTabBar);
+    -webkit-mask-image: radial-gradient(circle at 0 0, rgba(0, 0, 0, 0) 70%, #000 73%);
+    transform: rotate(180deg);
+    z-index: 1;
+}
+
+#browser:not(.fullscreen) #webpage-stack::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: var(--radiusHalf);
+    height: var(--radiusHalf);
+    background-color: var(--colorTabBar);
+    -webkit-mask-image: radial-gradient(circle at 0 0, rgba(0, 0, 0, 0) 70%, #000 73%);
+    transform: rotate(-90deg);
+    z-index: 1;
+    top: 0;
+    right: 0;
+}
+#browser:not(.fullscreen):has(#panels-container.switcher) #webpage-stack {
+	margin-left: calc(var(--browserborder) - var(--leftbarwidth));
+}
+
+/* Color/Blur fix */
+span.button-icon {
+    color: var(--colorFg);
+}
+#browser.transparent-tabbar #tabs-tabbar-container {
+	background-color: unset !important;
+}
