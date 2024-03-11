@@ -1,8 +1,9 @@
 :root {
-	--leftbarwidth: calc(6 * 32px + var(--browserborder) + var(--browserborder)); /* default is 4 status bar button + bookmarks + workspaces, adjust this for your best view */
+	--leftbarwidth: 204px; /* default is 4 status bar button + bookmarks + workspaces, adjust this for your best view */
 	--browserborder: 6px; /* change this if you want to change border size */
 	--biggertab: 40px;
 	--lightgradient: linear-gradient(#C9CEE1, #EEB7CA);
+	--darkcolor: linear-gradient(#252F56, #252F56);
 	--darkgradient: linear-gradient(#3a415b, #505050);
 }
 
@@ -12,15 +13,21 @@
 }
 .transparent-tabbar.theme-id-6daae12c-c28f-462a-9f56-4755ea72948e,
 .transparent-tabbar.theme-id-6daae12c-c28f-462a-9f56-4755ea72948e .tabbar-wrapper > .tabbar-wrapper{
-	background-image: var(--darkgradient) !important;
+	background-image: var(--darkcolor) !important;
 }
 
 /* top bar */
 /*more arc*/
+#browser.win.address-top .toolbar:has(.window-buttongroup.on-mainbar) {
+	padding-right: calc(46px * 3);
+}
 .mainbar > *,
-.window-buttongroup.on-mainbar {
-    height: 34px !important;
+.mainbar .window-buttongroup.on-mainbar,
+.mainbar .window-buttongroup.on-mainbar > button{
     min-height: 34px !important;
+	max-height: 34px !important;
+	height: 34px !important;
+	scale: 1 !important;
 }
 span.UrlFragment--Lowlight.UrlFragment-Link {
     display: none;
@@ -49,20 +56,19 @@ button.vivaldi span.expand-arrow {display: none;}
 input#urlFieldInput {text-align:center;}
 .UrlBar-UrlObfuscationWarning {-webkit-app-region: no-drag !important;}
 
-#browser:has(.switcher):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(4)[class="button-toolbar toolbar-spacer"],
-#browser:has(.switcher):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(4)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
+#browser:has(.switcher):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(5)[class="button-toolbar toolbar-spacer"],
+#browser:has(.switcher):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(5)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
 	max-width: 0px;
 }
-#browser:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(4)[class="button-toolbar toolbar-spacer"],
-#browser:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(4)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
-	min-width: calc(var(--leftbarwidth) - 34px - 56px)
+#browser:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(5)[class="button-toolbar toolbar-spacer"],
+#browser:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(5)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
+	min-width: calc(var(--leftbarwidth) - 34px - 56px - 34px)
 }
 /* left tab bar */
 #tabs-container {
 	min-width: var(--leftbarwidth);
 	max-width: var(--leftbarwidth);
-	padding: var(--browserborder);
-	height: calc(100% + var(--browserborder) - 32px);
+	padding: var(--browserborder) var(--browserborder) 0 var(--browserborder);
 }
 .tabbar-wrapper > .tabbar-wrapper {
 	border-top-right-radius: var(--radiusHalf);
@@ -127,30 +133,41 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {content: "New Tab";co
 #tabs-container > button {
 	display: none;
 }
-.tab-position:not(.is-pinned) .tab-audio {top: 12px !important;}
+/* QOL */
+/* not pinned tab audio button */
+/* .tab-position:not(.is-pinned) .tab-audio {top: 12px !important;} */
+.tab-position:not(.is-pinned) {
+	.tab-audio {position: relative !important;top: 0 !important;order: 0;margin-right:5px;color:var(--colorFg);}
+	.title{position: relative !important;order: 1;}
+	.close{position: relative !important;order: 1;}
+	.favicon{transform:unset !important;}
+}
+/* other QOL */
 .tab-position.is-pinned .tab-audio {top: 0 !important;}
 .tab-position .tab,button.ToolbarButton-Button[title="Open a New Tab"]:after {font-size: 14px;}
-/* bigger tab and fav icon */
+.tab-position:not(.toolbar):not(.is-pinned):not(.tab-yield-space) {order: 1;}
+.toolbar.toolbar-tabbar.toolbar-large.tab-position {order: 0;}
+/* Seperator */
+:has(.tab-position.is-pinned) .toolbar.toolbar-tabbar.toolbar-large.tab-position {margin-top: 20px;}
+:has(.tab-position.is-pinned) .toolbar.toolbar-tabbar.toolbar-large.tab-position:before {content: '';width: 90%;position: absolute;top: -11px;border-top: 2px solid var(--colorFgAlpha);left: 5%;}
+/* Rubbish bin*/
+.button-toolbar.toggle-trash {height: 28px;}
+.sync-and-trash-container {margin: 0 auto 1px 0 !important;justify-content: unset !important;scale:1.07;}
+/* bigger tab */
 .tab-position .tab .tab-header {
     flex-basis: var(--biggertab) !important;
 }
 .tab-position:not(.is-pinned) .tab .tab-header > .favicon {min-width: 28px;}
 .tab-position:not(.is-pinned) .tab .tab-header > .title {padding:0;}
-#tabs-container .ToolbarButton-Button {
-  height: var(--biggertab);
-}
 #tabs-container .tab-position:not(.accordion-toggle-arrow) {
 	height: var(--biggertab) !important;
-}
-#tabs-container .newtab {
-	height: var(--biggertab);
 }
 /* workspace icononly */
 .tabbar-workspace-button {
 	position: absolute;
 	padding: 0 6px;
-	left: calc(var(--leftbarwidth) - 32px - var(--browserborder));
-	bottom: 2px;
+	right: var(--browserborder);
+	bottom: 1px;
 	width: 32px !important;
 	height: 28px !important;
 	z-index: 5;
@@ -178,7 +195,7 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {content: "New Tab";co
 #browser:has(.switcher):not(.toolbar-edit-mode) {
 	.tabbar-wrapper > .tabbar-wrapper, .bookmarkbarItem.chevron, .tabbar-workspace-button {
 		transition-duration: 300ms !important;
-		transition-property: left, opacity !important;
+		transition-property: left, right, opacity !important;
 		transition-delay: 300ms !important;
 	}
 	.tabbar-wrapper > .tabbar-wrapper, .bookmarkbarItem.chevron:not(.highlighted) {
@@ -187,16 +204,15 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {content: "New Tab";co
 		opacity: 0;
 	}
 	.tabbar-workspace-button {
-		left: calc(-32px - var(--browserborder));
 		opacity: 0;
-	}
+	}/*
 	.toolbar-statusbar {
 		left: calc(32px + var(--browserborder) - var(--leftbarwidth));
 		color: transparent;
 		transition-duration: 300ms !important;
 		transition-property: left, color !important;
 		transition-delay: 300ms !important;
-	}
+	}*/
 }
 #browser:has(.switcher) .tabbar-wrapper > .tabbar-wrapper:hover,
 #browser:has(.switcher):has(.WorkspacePopup) .tabbar-wrapper > .tabbar-wrapper,
@@ -217,10 +233,10 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {content: "New Tab";co
 #browser:has(.switcher):has(.bookmarkbarItem.chevron.highlighted) .tabbar-workspace-button,
 #browser:has(.switcher):has(.toolbar-statusbar:hover) .tabbar-workspace-button,
 #browser:has(.switcher):has(.download-popout) .tabbar-workspace-button{
-	left: calc(var(--leftbarwidth) - 32px - var(--browserborder)) !important;
 	opacity: 1 !important;
 	transition-delay: 0ms !important;
 }
+/*
 #browser:has(.switcher):has(.tabbar-wrapper > .tabbar-wrapper:hover) .toolbar-statusbar,
 #browser:has(.switcher):has(.WorkspacePopup) .toolbar-statusbar,
 #browser:has(.switcher):has(.bookmarkbarItem.chevron.highlighted) .toolbar-statusbar,
@@ -254,13 +270,12 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {content: "New Tab";co
 }
 /* bottom bar */
 .bookmark-bar {
-	left: var(--browserborder);
-	height: 28px;
-	max-height: 28px;
+	left: calc(var(--leftbarwidth) / 2 - 16px);
+	height: 28px !important;
 	position: fixed;
 	min-width: 32px;
 	max-width: 32px;
-	bottom: var(--browserborder);
+	bottom: calc(var(--browserborder) - 1px);
 	border: unset;
 	visibility: collapse;
 	z-index: 2;
@@ -281,7 +296,8 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {content: "New Tab";co
 #browser:not(.toolbar-edit-mode) .toolbar-statusbar {
 	position: absolute;
 	bottom: var(--browserborder);
-	width: calc(var(--leftbarwidth) - 60px - var(--browserborder) - var(--browserborder));
+	width: 0;
+	/* width: calc(var(--leftbarwidth) - 60px - var(--browserborder) - var(--browserborder)); */
 }
 .toolbar-statusbar {
 	left: calc(32px + var(--browserborder));
