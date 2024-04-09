@@ -22,7 +22,7 @@
 | Settings | Options |
 | --- | --- |
 | Tab |1. Show Tab Bar<br>2. Left|
-| Panel |1. Left<br>2. Check Floating Panel<br>3. Uncheck auto-close Inactive Panel|
+| Panel |1. Left<br>2. Uncheck Floating Panel and Show Panel Toggel<br>3. Uncheck auto-close Inactive Panel|
 | Address Bar |1. Top<br>2. Check Hidden Extensions to drop-down menu|
 | Bookmarks |1. Check Show Bookmark Bar |
 | Appearance |1. Set custom ui modifications folder as you like<br>2. User Interface Zoom 100% (only work at 100% right now)|
