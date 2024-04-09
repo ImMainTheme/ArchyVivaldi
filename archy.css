@@ -87,6 +87,7 @@ input#urlFieldInput {text-align:center;}
 }
 #tabs-tabbar-container {
 	padding: 0 !important;
+	width: var(--leftbarwidth) !important;
 }
 /* button pin tab */
 .tab-position.is-pinned .tab {background-color: var(--colorImageBgAlphaHeavy, var(--colorBgAlphaHeavier)); }
@@ -333,7 +334,7 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {content: "New Tab";co
 /* CurvedFrame.css */
 #browser:not(.fullscreen) #webpage-stack {
     /* change color (last parameter) to your preferred color */
-    box-shadow: 0 0 0 calc(var(--browserborder) * 2) var(--colorTabBar); 
+    box-shadow: 0 0 0 calc(var(--browserborder) * 4) var(--colorTabBar); 
 	border-radius: var(--radiusHalf);
 	margin-bottom: var(--browserborder);
 	margin-right: var(--browserborder);
