@@ -36,7 +36,7 @@ span.UrlFragment--Lowlight.UrlFragment-Link {
     max-width: fit-content;
     background: transparent;
     border: none;
-	.UrlFragments.UrlFragment-Wrapper.UrlFragment-Wrapper--ShouldHighlight{padding:0;opacity: 1;}
+	.UrlFragments.UrlFragment-Wrapper.UrlFragment-Wrapper--ShouldHighlight{padding:0;opacity: 1;overflow:visible;justify-content: center;}
 	.UrlField--IsEmpty .UrlFragment-Wrapper, .UrlField--HasEditText .UrlFragment-Wrapper{opacity: 1;}
 	input#urlFieldInput {opacity: 0;}
 	button {visibility:hidden;width:0;border:0;}
@@ -86,8 +86,8 @@ input#urlFieldInput {text-align:center;}
 	z-index: 1;
 }
 #tabs-tabbar-container {
-	padding: 0 !important;
 	width: var(--leftbarwidth) !important;
+	padding: 0 !important;
 }
 /* button pin tab */
 .tab-position.is-pinned .tab {background-color: var(--colorImageBgAlphaHeavy, var(--colorBgAlphaHeavier)); }
@@ -334,7 +334,7 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {content: "New Tab";co
 /* CurvedFrame.css */
 #browser:not(.fullscreen) #webpage-stack {
     /* change color (last parameter) to your preferred color */
-    box-shadow: 0 0 0 calc(var(--browserborder) * 4) var(--colorTabBar); 
+    box-shadow: 0 0 0 calc(var(--browserborder) * 2) var(--colorTabBar); 
 	border-radius: var(--radiusHalf);
 	margin-bottom: var(--browserborder);
 	margin-right: var(--browserborder);
