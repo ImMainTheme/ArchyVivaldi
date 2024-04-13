@@ -9,23 +9,23 @@
 <details>
 <summary>Settings need to change before applying css:</summary>
 
-
+PS: Panel is not working on this project right now!!
 1. Toolbar Edit (right click on any toolbar -> Customize Toolbar)
 
 | Category | Options |
 | --- | --- |
-| Address Bar |Put the following item in sequence:<br><code>Panel Toggle // Space // Back // Forward // Reload // Flexible Space // AddressField // Flexible Space // Page Tiling // Extensions</code>|
-| Status Bar |Put address bar's downloads on left (panel's download don't work on Archy)|
+| Address Bar |Put the following item in sequence:<br><code>Panel Toggle // Space // Download // Back // Forward // Reload // Flexible Space // AddressField // Flexible Space // Page Tiling // Extensions</code>|
+| Status Bar |Put status info only|
 
 2. Vivaldi settings (Gear icon)
 
 | Settings | Options |
 | --- | --- |
 | Tab |1. Show Tab Bar<br>2. Left|
-| Panel |1. Left<br>2. Uncheck Floating Panel and Show Panel Toggel<br>3. Uncheck auto-close Inactive Panel|
+| Panel |1. Left<br>2. Uncheck Floating Panel and Show Panel Toggel|
 | Address Bar |1. Top<br>2. Check Hidden Extensions to drop-down menu|
 | Bookmarks |1. Check Show Bookmark Bar |
-| Appearance |1. Set custom ui modifications folder as you like<br>2. User Interface Zoom 100% (only work at 100% right now)|
+| Appearance |1. Set custom ui modifications folder as you like<br>2. User Interface Zoom 100% (only tested at 100%)|
 
 3. Goto vivaldi://experiments/ and check Allow CSS modifications
 
