@@ -86,7 +86,6 @@ input#urlFieldInput {text-align:center;}
 	z-index: 1;
 }
 #tabs-tabbar-container {
-	width: var(--leftbarwidth) !important;
 	padding: 0 !important;
 }
 /* button pin tab */
@@ -95,10 +94,15 @@ input#urlFieldInput {text-align:center;}
 .tab-position.is-pinned,
 #tabs-container > .resize > .tab-strip .tab-yield-space {
 	min-width: calc(var(--biggertab) - 4%);
+	max-width: 32%;
 	flex: 1 1 32%;
 	margin: .5% 0;
 	transform: unset !important;
 	position: relative;
+}
+.tab-strip > span:first-child > .tab-position.is-pinned,
+.tab-strip > span:nth-child(2) > .tab-position.is-pinned {
+	max-width: unset;
 }
 .tab-strip {
 	display: flex;
@@ -247,28 +251,6 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {content: "New Tab";co
 	color: var(--colorFg) !important;
 	transition-delay: 0ms !important;
 }
-/* right bar */
-/* no panels */
-#panels-container {
-	display: none;
-}
-/* extension icon to right *//*
-#browser:has(.button-toolbar.extensionPopupIcons) .toolbar-extensions {
-	position: absolute;
-	right: -34px;
-	opacity: 0;
-	top: 100%;
-	transition-duration: 300ms !important;
-	transition-property: right, opacity !important;
-	transition-delay: 300ms !important;
-	padding-right: var(--browserborder);
-}
-#browser:has(.button-toolbar.extensionPopupIcons) .toolbar-extensions:hover,
-#browser:has(.button-toolbar.extensionPopupIcons):has(.extensionIconPopupMenu) .toolbar-extensions {
-	right:0;
-	opacity: 1;
-	transition-delay: 0ms !important;
-}
 /* bottom bar */
 .bookmark-bar {
 	left: calc(var(--leftbarwidth) / 2 - 16px);
@@ -374,3 +356,8 @@ span.button-icon {
 #browser.transparent-tabbar #tabs-tabbar-container {
 	background-color: unset !important;
 }
+
+
+/* right bar */
+/* no panels */
+#panels-container {display: none;}
