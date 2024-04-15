@@ -86,6 +86,7 @@ input#urlFieldInput {text-align:center;}
 	z-index: 1;
 }
 #tabs-tabbar-container {
+	width: var(--leftbarwidth) !important;
 	padding: 0 !important;
 }
 /* button pin tab */
