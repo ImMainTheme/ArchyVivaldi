@@ -22,7 +22,7 @@ PS: Panel is not working on this project right now!!
 | Settings | Options |
 | --- | --- |
 | Tab |1. Show Tab Bar<br>2. Left|
-| Panel |1. Left<br>2. Uncheck Floating Panel and Show Panel Toggel|
+| Panel |no settings needed if you use no panel version|
 | Address Bar |1. Top<br>2. Check Hidden Extensions to drop-down menu|
 | Bookmarks |1. Check Show Bookmark Bar |
 | Appearance |1. Set custom ui modifications folder as you like|
