@@ -1,6 +1,6 @@
 :root {
 	--leftbarwidth: 204px; /* default is 4 status bar button + bookmarks + workspaces, adjust this for your best view */
-	--browserborder: 6px; /* change this if you want to change border size */
+	--browserborder: 10px; /* change this if you want to change border size */
 	--biggertab: 40px;
 	--lightgradient: linear-gradient(#C9CEE1, #EEB7CA);
 	--darkcolor: linear-gradient(#252F56, #252F56);
@@ -21,6 +21,21 @@
 #browser.win.address-top .toolbar:has(.window-buttongroup.on-mainbar) {
 	padding-right: calc(46px * 3);
 }
+#browser.win.address-bottom:not(.toolbar-edit-mode):not(.is-settingspage) {
+	#header {order: 1;max-height: 0px;min-height: 0px;}
+	.mainbar {padding-left: var(--menuWidth);padding-right: calc(46px * 3);border-top-width: 0px !important;}
+	.window-buttongroup {top:-34px;min-height: 34px !important;max-height: 34px !important;height: 34px !important;scale: 1 !important;}
+	.window-buttongroup > button {height: 34px !important;}
+	.button-toolbar.toolbar-spacer-flexible > button, .button-toolbar.toolbar-spacer > button {-webkit-app-region: drag;}
+	button.vivaldi {top:-34px;height:34px !important;width:var(--menuWidth);}
+	:not(.fullscreen) #webpage-stack {margin-top: var(--browserborder);margin-bottom: unset !important;}
+	:has(.switcher) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer"],
+	:has(.switcher) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer button-disabled-preview"] {max-width: 0px;}
+	:not(:has(.switcher)) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer"],
+	:not(:has(.switcher)) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer button-disabled-preview"]{min-width: calc(var(--leftbarwidth) - 34px - 56px - 34px)}
+	.bookmark-bar {bottom: calc(var(--browserborder) + 35px - 1px) !important;}
+}
+
 .mainbar > *,
 .mainbar .window-buttongroup.on-mainbar,
 .mainbar .window-buttongroup.on-mainbar > button{
@@ -40,10 +55,10 @@ span.UrlFragment--Lowlight.UrlFragment-Link {
 	.UrlField--IsEmpty .UrlFragment-Wrapper, .UrlField--HasEditText .UrlFragment-Wrapper{opacity: 1;}
 	input#urlFieldInput {opacity: 0;}
 	button {visibility:hidden;width:0;border:0;}
+	
 }
 .UrlFragment--Lowlight.UrlFragment-HostFragment-Subdomain {color: var(--HighlightColor);}
 .BookmarkButton--Active {background: transparent;}
-/**/
 button.vivaldi {width: 34px;}
 button.vivaldi span.expand-arrow {display: none;}
 .mainbar {
@@ -56,12 +71,12 @@ button.vivaldi span.expand-arrow {display: none;}
 input#urlFieldInput {text-align:center;}
 .UrlBar-UrlObfuscationWarning {-webkit-app-region: no-drag !important;}
 
-#browser:has(.switcher):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(5)[class="button-toolbar toolbar-spacer"],
-#browser:has(.switcher):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(5)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
+#browser:has(.switcher):not(.toolbar-edit-mode) .mainbar > .toolbar.toolbar-visible > div:nth-child(5)[class="button-toolbar toolbar-spacer"],
+#browser:has(.switcher):not(.toolbar-edit-mode) .mainbar > .toolbar.toolbar-visible > div:nth-child(5)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
 	max-width: 0px;
 }
-#browser:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(5)[class="button-toolbar toolbar-spacer"],
-#browser:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar > div:nth-child(5)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
+#browser:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar.toolbar-visible > div:nth-child(5)[class="button-toolbar toolbar-spacer"],
+#browser:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar.toolbar-visible > div:nth-child(5)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
 	min-width: calc(var(--leftbarwidth) - 34px - 56px - 34px)
 }
 /* left tab bar */
