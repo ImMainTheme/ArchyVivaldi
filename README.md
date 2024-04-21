@@ -21,10 +21,10 @@ PS: Panel is not working on this project right now!!
 
 | Settings | Options |
 | --- | --- |
-| Tabs |1. Show Tab Bar<br>2. Left<br>3. Uncheck Show Separator Below Pinned Tabs|
+| Tabs |1. Show Tab Bar<br>2. Left<br>3. Uncheck "Show Separator Below Pinned Tabs"<br>4. Check "Enable Workspaces" and "Show Workspaces in Tab Bar"|
 | Panel |no settings needed if you use no panel version|
-| Address Bar |1. Top<br>2. Check Hidden Extensions to drop-down menu|
-| Bookmarks |1. Check Show Bookmark Bar |
+| Address Bar |1. Top<br>2. Check "Hidden Extensions to drop-down menu"|
+| Bookmarks |1. Check "Show Bookmark Bar" |
 | Appearance |1. Set custom ui modifications folder as you like|
 
 3. Goto vivaldi://experiments/ and check Allow CSS modifications
