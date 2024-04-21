@@ -14,7 +14,7 @@ PS: Panel is not working on this project right now!!
 
 | Category | Options |
 | --- | --- |
-| Address Bar |Put the following item in sequence:<br><code>Panel Toggle // Space // Download // Back // Forward // Reload // Flexible Space // AddressField // Flexible Space // Page Tiling // Extensions</code>|
+| Address Bar |Put the following item in sequence:<br><code>Panel Toggle // Download // Space // Back // Forward // Reload // Flexible Space // AddressField // Flexible Space // Page Tiling // Extensions</code>|
 | Status Bar |Put status info only|
 
 2. Vivaldi settings (Gear icon)
