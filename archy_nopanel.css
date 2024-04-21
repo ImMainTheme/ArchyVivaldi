@@ -23,11 +23,11 @@
 }
 #browser.win.address-bottom:not(.toolbar-edit-mode):not(.is-settingspage) {
 	#header {order: 1;max-height: 0px;min-height: 0px;}
-	.mainbar {padding-left: var(--menuWidth);padding-right: calc(46px * 3);border-top-width: 0px !important;}
+	.mainbar {padding-left: calc(var(--menuWidth) + 12px);padding-right: calc(46px * 3);border-top-width: 0px !important;}
 	.window-buttongroup {top:-34px;min-height: 34px !important;max-height: 34px !important;height: 34px !important;scale: 1 !important;}
 	.window-buttongroup > button {height: 34px !important;}
 	.button-toolbar.toolbar-spacer-flexible > button, .button-toolbar.toolbar-spacer > button {-webkit-app-region: drag;}
-	button.vivaldi {top:-34px;height:34px !important;width:var(--menuWidth);}
+	button.vivaldi {top:-34px;height:34px !important;width:var(--menuWidth);scale: unset !important;margin: 0 6px !important;}
 	:not(.fullscreen) #webpage-stack {margin-top: var(--browserborder);margin-bottom: unset !important;}
 	:has(.switcher) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer"],
 	:has(.switcher) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer button-disabled-preview"] {max-width: 0px;}
