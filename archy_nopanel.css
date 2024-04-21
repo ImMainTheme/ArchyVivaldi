@@ -34,6 +34,7 @@
 	:not(:has(.switcher)) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer"],
 	:not(:has(.switcher)) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer button-disabled-preview"]{min-width: calc(var(--leftbarwidth) - 34px - 56px - 34px)}
 	.bookmark-bar {bottom: calc(var(--browserborder) + 35px - 1px) !important;}
+	:not(:has(#panels-container.switcher)) .button-textonly.StatusInfo {bottom: 35px;}
 }
 
 .mainbar > *,
