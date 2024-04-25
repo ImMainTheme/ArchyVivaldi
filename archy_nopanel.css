@@ -186,14 +186,15 @@ input#urlFieldInput {text-align:center;}
 	.newtab {margin-left: calc((var(--leftbarwidth) - var(--browserborder) - var(--browserborder) - 56px));}
 }
 #main:has(.synced-tabs-button) {
-	.tabbar-workspace-button  {transform: translateX(28px);}
-	.bookmark-bar {transform: translateX(-28px);}
+	.tabbar-workspace-button  {transform: translateX(32px);}
+	.bookmark-bar {transform: translateX(-32px);}
 }
 #main:not(:has(.synced-tabs-button)) {
-	.tabbar-workspace-button  {transform: translateX(14px);}
-	.bookmark-bar {transform: translateX(-14px);}
+	.tabbar-workspace-button  {transform: translateX(16px);}
+	.bookmark-bar {transform: translateX(-16px);}
 }
 /* workspace icononly */
+.separator-wsbutton {display: none;}
 .tabbar-workspace-button {
 	position: absolute;
 	padding: 0 6px;
@@ -203,6 +204,8 @@ input#urlFieldInput {text-align:center;}
 	height: 28px !important;
 	z-index: 5;
 	background-color: transparent !important;
+	justify-content: center;
+	button.ToolbarButton-Button[title="Workspaces"] {min-width: 32px;margin: 0px !important;}
 }
 .button-toolbar.workspace-popup.tabbar-workspace-button button:hover {
 	background-color: transparent !important;
