@@ -143,17 +143,18 @@ input#urlFieldInput {text-align:center;}
 	transform: unset !important;
 	margin-bottom: 1%;
 }
-#tabs-container .newtab {
-	top: unset !important;
-	left: unset !important;
-	transform: unset !important;
-	justify-content: center;
-	width: var(--leftbarwidth);
-}
-button.ToolbarButton-Button[title="Open a New Tab"]:after {content: "New Tab";color: var(--colorFg);width: calc(100% - 28px);}
 #tabs-tabbar-container > button,
 #tabs-container > button {
 	display: none;
+}
+/* bigger tab */
+.tab-position .tab .tab-header {
+    flex-basis: var(--biggertab) !important;
+}
+.tab-position:not(.is-pinned) .tab .tab-header > .favicon {min-width: 28px;}
+.tab-position:not(.is-pinned) .tab .tab-header > .title {padding:0;}
+#tabs-container .tab-position:not(.accordion-toggle-arrow) {
+	height: var(--biggertab) !important;
 }
 /* QOL */
 /* not pinned tab audio button */
@@ -166,29 +167,37 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {content: "New Tab";co
 }
 /* other QOL */
 .tab-position.is-pinned .tab-audio {top: 0 !important;}
-.tab-position .tab,button.ToolbarButton-Button[title="Open a New Tab"]:after {font-size: 14px;}
+.tab-position .tab {font-size: 14px;}
 .tab-position:not(.toolbar):not(.is-pinned):not(.tab-yield-space) {order: 1;}
 .toolbar.toolbar-tabbar.toolbar-large.tab-position {order: 0;}
 /* Seperator */
 :has(.tab-position.is-pinned) .toolbar.toolbar-tabbar.toolbar-large.tab-position {margin-top: 20px;}
 :has(.tab-position.is-pinned) .toolbar.toolbar-tabbar.toolbar-large.tab-position:before {content: '';width: 90%;position: absolute;top: -11px;border-top: 2px solid var(--colorFgAlpha);left: 5%;}
-/* Rubbish bin*/
-.button-toolbar.toggle-trash {height: 28px;}
-.sync-and-trash-container {margin: 0 auto 1px 0 !important;justify-content: unset !important;scale:1.07;}
-/* bigger tab */
-.tab-position .tab .tab-header {
-    flex-basis: var(--biggertab) !important;
+/* Rubbish bin, new tab*/
+#tabs-container > .toolbar.toolbar-tabbar.sync-and-trash-container {
+	.button-toolbar {height: 28px;}
+	.toggle-trash {order:-1;}
+	.newtab {order:1;}
 }
-.tab-position:not(.is-pinned) .tab .tab-header > .favicon {min-width: 28px;}
-.tab-position:not(.is-pinned) .tab .tab-header > .title {padding:0;}
-#tabs-container .tab-position:not(.accordion-toggle-arrow) {
-	height: var(--biggertab) !important;
+#tabs-container > .toolbar.toolbar-tabbar.sync-and-trash-container:has(.synced-tabs-button) {
+	.synced-tabs-button, .newtab {margin-left: calc((var(--leftbarwidth) - var(--browserborder) - var(--browserborder) - 84px) / 2);}
+}
+#tabs-container > .toolbar.toolbar-tabbar.sync-and-trash-container:not(:has(.synced-tabs-button)) {
+	.newtab {margin-left: calc((var(--leftbarwidth) - var(--browserborder) - var(--browserborder) - 56px));}
+}
+#main:has(.synced-tabs-button) {
+	.tabbar-workspace-button  {transform: translateX(28px);}
+	.bookmark-bar {transform: translateX(-28px);}
+}
+#main:not(:has(.synced-tabs-button)) {
+	.tabbar-workspace-button  {transform: translateX(14px);}
+	.bookmark-bar {transform: translateX(-14px);}
 }
 /* workspace icononly */
 .tabbar-workspace-button {
 	position: absolute;
 	padding: 0 6px;
-	right: var(--browserborder);
+	right: calc(var(--leftbarwidth) / 2 - 16px);
 	bottom: 1px;
 	width: 32px !important;
 	height: 28px !important;
@@ -212,6 +221,30 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {content: "New Tab";co
 }
 .bookmarkbarItem.chevron {
 	margin-left: -3px !important;
+}
+
+.bookmark-bar {
+	left: calc(var(--leftbarwidth) / 2 - 16px);
+	height: 28px !important;
+	position: fixed;
+	min-width: 32px;
+	max-width: 32px;
+	bottom: calc(var(--browserborder) - 1px);
+	border: unset;
+	visibility: collapse;
+	z-index: 2;
+}
+.bookmark-bar .observer button {
+	visibility: visible;
+}
+.bookmark-bar .observer .bookmarkbarItem {
+    background: var(--colorTabBar) !important;
+	width: 32px;
+    justify-content: center;
+	background-color: transparent !important;
+}
+.bookmarkbarItem > svg > path {
+	d: path("M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z")
 }
 /* floating tabs using panel toggle*/
 #browser:has(.switcher):not(.toolbar-edit-mode) {
@@ -269,29 +302,6 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {content: "New Tab";co
 	transition-delay: 0ms !important;
 }
 /* bottom bar */
-.bookmark-bar {
-	left: calc(var(--leftbarwidth) / 2 - 16px);
-	height: 28px !important;
-	position: fixed;
-	min-width: 32px;
-	max-width: 32px;
-	bottom: calc(var(--browserborder) - 1px);
-	border: unset;
-	visibility: collapse;
-	z-index: 2;
-}
-.bookmark-bar .observer button {
-	visibility: visible;
-}
-.bookmark-bar .observer .bookmarkbarItem {
-    background: var(--colorTabBar) !important;
-	width: 32px;
-    justify-content: center;
-	background-color: transparent !important;
-}
-.bookmarkbarItem > svg > path {
-	d: path("M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z")
-}
 /* Hide Status Bar too, if u need status info just put it there */
 #browser:not(.toolbar-edit-mode) .toolbar-statusbar {
 	position: absolute;
