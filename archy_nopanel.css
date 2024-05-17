@@ -170,35 +170,54 @@ input#urlFieldInput {text-align:center;}
 .tab-position .tab {font-size: 14px;}
 .tab-position:not(.toolbar):not(.is-pinned):not(.tab-yield-space) {order: 1;}
 .toolbar.toolbar-tabbar.toolbar-large.tab-position {order: 0;}
-/* Seperator */
-:has(.tab-position.is-pinned) .toolbar.toolbar-tabbar.toolbar-large.tab-position {margin-top: 20px;}
-:has(.tab-position.is-pinned) .toolbar.toolbar-tabbar.toolbar-large.tab-position:before {content: '';width: 90%;position: absolute;top: -11px;border-top: 2px solid var(--colorFgAlpha);left: 5%;}
-/* Rubbish bin, new tab*/
-#tabs-container > .toolbar.toolbar-tabbar.sync-and-trash-container {
-	.button-toolbar {height: 28px;}
-	.toggle-trash {order:-1;}
-	.newtab {order:1;}
+/* Seperator + fix new tab */
+.button-toolbar.newtab {
+    position: absolute;
+    margin-left: 0 !important;
+	height: var(--biggertab);
+    max-width: calc(var(--leftbarwidth) - var(--browserborder) - var(--browserborder));
 }
-#tabs-container > .toolbar.toolbar-tabbar.sync-and-trash-container:has(.synced-tabs-button) {
-	.synced-tabs-button, .newtab {margin-left: calc((var(--leftbarwidth) - var(--browserborder) - var(--browserborder) - 84px) / 2);}
+.button-toolbar.newtab:before {
+    content: '';width: 90%;position: absolute;top: -5px;border-top: 2px solid var(--colorFgAlpha);left: 5%;
 }
-#tabs-container > .toolbar.toolbar-tabbar.sync-and-trash-container:not(:has(.synced-tabs-button)) {
-	.newtab {margin-left: calc((var(--leftbarwidth) - var(--browserborder) - var(--browserborder) - 56px));}
+button.ToolbarButton-Button[title="Open a New Tab"]:after {
+    content: "New Tab";
+    color: var(--colorFg);
+    width: calc(var(--leftbarwidth) - 28px - var(--browserborder) - var(--browserborder));
+    font-size: 14px;
+}
+#browser:has(.tab-strip > span:nth-child(1) > .tab-position:not(.is-pinned)) {
+	.tab-strip > span:nth-child(1) > .tab-position {margin-top: var(--biggertab);}
+    .button-toolbar.newtab {top: var(--browserborder);}
+	.button-toolbar.newtab:before {display: none;}
+}
+#browser:has(.tab-strip > span:nth-child(1) > .tab-position.is-pinned):not(:has(.tab-strip > span:nth-child(4) > .tab-position.is-pinned)) {
+    .button-toolbar.newtab {top: calc(var(--biggertab) + 18px + var(--browserborder) + 2px);}
+    .separator {margin-bottom: var(--biggertab);opacity:0;}
+}
+#browser:has(.tab-strip > span:nth-child(4) > .tab-position.is-pinned):not(:has(.tab-strip > span:nth-child(7) > .tab-position.is-pinned)) {
+    .button-toolbar.newtab {top: calc(var(--biggertab) + var(--biggertab) + 18px + var(--browserborder) + 2px);}
+    .separator {margin-bottom: var(--biggertab);opacity:0;}
+}
+#browser:has(.tab-strip > span:nth-child(7) > .tab-position.is-pinned):not(:has(.tab-strip > span:nth-child(11) > .tab-position.is-pinned)) {
+    .button-toolbar.newtab {top: calc(var(--biggertab) + var(--biggertab) + var(--biggertab) + 18px + var(--browserborder) + 2px);}
+    .separator {margin-bottom: var(--biggertab);opacity:0;}
+}
+/* rubbish bin */
+.button-toolbar.toggle-trash {
+	position: absolute;
+	left: var(--browserborder);
 }
 #main:has(.synced-tabs-button) {
-	.tabbar-workspace-button  {transform: translateX(32px);}
-	.bookmark-bar {transform: translateX(-32px);}
-}
-#main:not(:has(.synced-tabs-button)) {
-	.tabbar-workspace-button  {transform: translateX(16px);}
-	.bookmark-bar {transform: translateX(-16px);}
+	.synced-tabs-button {transform:translateX(16px);}
+	.bookmark-bar .observer {transform:translateX(-16px);}
 }
 /* workspace icononly */
 .separator-wsbutton {display: none;}
 .tabbar-workspace-button {
 	position: absolute;
 	padding: 0 6px;
-	right: calc(var(--leftbarwidth) / 2 - 16px);
+	right: var(--browserborder);
 	bottom: 1px;
 	width: 32px !important;
 	height: 28px !important;
@@ -225,7 +244,6 @@ input#urlFieldInput {text-align:center;}
 .bookmarkbarItem.chevron {
 	margin-left: -3px !important;
 }
-
 .bookmark-bar {
 	left: calc(var(--leftbarwidth) / 2 - 16px);
 	height: 28px !important;
