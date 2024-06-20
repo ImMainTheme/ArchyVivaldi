@@ -190,13 +190,22 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {
 .resize {
 	max-height: calc(100% - 28px) !important;
 }
-.sync-and-trash-container {
-	justify-content:flex-start !important;
-	margin: 0 !important;
-	position: fixed;
-	bottom: var(--browserborder);
-	button {min-height: 28px !important;}
-
+#main:has(.sync-and-trash-container > .newtab) {
+	.button-toolbar.toggle-trash {
+		position: fixed;
+		left: var(--browserborder);
+		bottom: var(--browserborder);
+		button {min-height: 28px !important;}
+	}
+}
+#main:not(:has(.sync-and-trash-container > .newtab)) {
+	.sync-and-trash-container {
+		justify-content:flex-start !important;
+		margin: 0 !important;
+		position: fixed;
+		bottom: var(--browserborder);
+		button {min-height: 28px !important;}
+	}
 }
 #main:has(.synced-tabs-button) {
 	.synced-tabs-button {transform:translateX(16px);}
