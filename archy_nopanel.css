@@ -195,6 +195,8 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {
 	margin: 0 !important;
 	position: fixed;
 	bottom: var(--browserborder);
+	button {min-height: 28px !important;}
+
 }
 #main:has(.synced-tabs-button) {
 	.synced-tabs-button {transform:translateX(16px);}
