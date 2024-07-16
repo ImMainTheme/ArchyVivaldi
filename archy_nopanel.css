@@ -40,9 +40,9 @@
 	:has(.switcher) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer button-disabled-preview"] {max-width: 0px;}
 	:not(:has(.switcher)) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer"],
 	:not(:has(.switcher)) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer button-disabled-preview"]{min-width: calc(var(--leftbarwidth) - 34px - 34px - 34px - var(--browserborder))}
-	.bookmark-bar {bottom: calc(var(--browserborder) + 35px - 1px) !important;}
-	.toggle-trash {bottom: calc(var(--browserborder) + 34px) !important;}
-	.inner > .tabbar-wrapper {margin-top: var(--browserborder); .tabbar-workspace-button {margin-bottom: var(--browserborder);}}
+	.bookmark-bar {bottom: 34px !important;}
+	.toggle-trash {bottom: 34px !important;}
+	.inner > .tabbar-wrapper {margin-top: var(--browserborder);}
 }
 
 #browser:not(.fullscreen) .mainbar > *,
