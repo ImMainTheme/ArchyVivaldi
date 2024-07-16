@@ -1,43 +1,51 @@
 :root {
-	--leftbarwidth: 204px; /* default is 4 status bar button + bookmarks + workspaces, adjust this for your best view */
+	--leftbarwidth: 200px; /* adjust this for your best view */
 	--browserborder: 10px; /* change this if you want to change border size */
-	--biggertab: 40px;
+	--PinnedTab: 45px; /* pinned tabs height */
+	--biggertab: 40px; /* normal tabs height */
 	--lightgradient: linear-gradient(#C9CEE1, #EEB7CA);
-	--darkcolor: linear-gradient(#252F56, #252F56);
-	--darkgradient: linear-gradient(#3a415b, #505050);
+	/* ^^^ Adjust as you want ^^^ */
+	--PinnedWidth: calc(var(--leftbarwidth) - var(--browserborder) - var(--browserborder));
 }
-
-.transparent-tabbar.theme-id-ccf1c7b4-2d19-415f-9ef4-9b24d4df0253,
-.transparent-tabbar.theme-id-ccf1c7b4-2d19-415f-9ef4-9b24d4df0253 .tabbar-wrapper > .tabbar-wrapper{
-	background-image: var(--lightgradient) !important;
+/* Theme settings */
+.theme-id-ccf1c7b4-2d19-415f-9ef4-9b24d4df0253 {
+	&, .tabbar-wrapper > .tabbar-wrapper, #tabs-subcontainer,
+	#panels-container:has(#panel_switch), #panels-container:has(#panel_switch) .panel-group,
+	&:not(.toolbar-edit-mode) .toolbar-extensions {
+		background-image: var(--lightgradient) !important;
+	}
 }
-.transparent-tabbar.theme-id-6daae12c-c28f-462a-9f56-4755ea72948e,
-.transparent-tabbar.theme-id-6daae12c-c28f-462a-9f56-4755ea72948e .tabbar-wrapper > .tabbar-wrapper{
-	background-image: var(--darkcolor) !important;
+.theme-id-6daae12c-c28f-462a-9f56-4755ea72948e {
+	&, .tabbar-wrapper > .tabbar-wrapper, #tabs-subcontainer,
+	#panels-container:has(#panel_switch), #panels-container:has(#panel_switch) .panel-group,
+	&:not(.toolbar-edit-mode) .toolbar-extensions {
+		background-image: linear-gradient(var(--colorAccentBg), var(--colorAccentBg)) !important;
+	}
 }
-
 /* top bar */
 /*more arc*/
 #browser.win.address-top .toolbar:has(.window-buttongroup.on-mainbar) {
 	padding-right: calc(46px * 3);
 }
-#browser.win.address-bottom:not(.toolbar-edit-mode):not(.is-settingspage) {
+/* For address bar on bottom */
+#browser.win.address-bottom:not(.is-settingspage) {
 	#header {order: 1;max-height: 0px;min-height: 0px;}
-	.mainbar {padding-left: calc(var(--menuWidth) + 12px);padding-right: calc(46px * 3);border-top-width: 0px !important;}
+	.mainbar {padding-left: var(--menuWidth);padding-right: calc(46px * 3);border-top-width: 0px !important;}
 	.window-buttongroup {top:-34px;min-height: 34px !important;max-height: 34px !important;height: 34px !important;scale: 1 !important;}
 	.window-buttongroup > button {height: 34px !important;}
 	.button-toolbar.toolbar-spacer-flexible > button, .button-toolbar.toolbar-spacer > button {-webkit-app-region: drag;}
-	button.vivaldi {top:-34px;height:34px !important;width:var(--menuWidth);scale: unset !important;margin: 0 6px !important;}
+	button.vivaldi {top:-34px;height:34px !important;width:var(--menuWidth);scale: unset !important;}
 	:not(.fullscreen) #webpage-stack {margin-top: var(--browserborder);margin-bottom: unset !important;}
 	:has(.switcher) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer"],
 	:has(.switcher) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer button-disabled-preview"] {max-width: 0px;}
 	:not(:has(.switcher)) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer"],
-	:not(:has(.switcher)) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer button-disabled-preview"]{min-width: calc(var(--leftbarwidth) - 34px - 56px - 34px)}
+	:not(:has(.switcher)) .mainbar > .toolbar.toolbar-visible > div:nth-child(3)[class="button-toolbar toolbar-spacer button-disabled-preview"]{min-width: calc(var(--leftbarwidth) - 34px - 34px - 34px - var(--browserborder))}
 	.bookmark-bar {bottom: calc(var(--browserborder) + 35px - 1px) !important;}
-	:not(:has(#panels-container.switcher)) .button-textonly.StatusInfo {bottom: 35px !important;}
+	.toggle-trash {bottom: calc(var(--browserborder) + 34px) !important;}
+	.inner > .tabbar-wrapper {margin-top: var(--browserborder); .tabbar-workspace-button {margin-bottom: var(--browserborder);}}
 }
 
-.mainbar > *,
+#browser:not(.fullscreen) .mainbar > *,
 .mainbar .window-buttongroup.on-mainbar,
 .mainbar .window-buttongroup.on-mainbar > button{
     min-height: 34px !important;
@@ -49,24 +57,22 @@ span.UrlFragment--Lowlight.UrlFragment-Link {
     display: none;
 }
 .UrlBar-AddressField.button-textonly:not(:focus-within) {
-    max-width: fit-content;
+	max-width: max-content;
     background: transparent;
     border: none;
-	.UrlFragments.UrlFragment-Wrapper.UrlFragment-Wrapper--ShouldHighlight{padding:0;opacity: 1;overflow:visible;justify-content: center;}
-	.UrlField--IsEmpty .UrlFragment-Wrapper, .UrlField--HasEditText .UrlFragment-Wrapper{opacity: 1;}
-	input#urlFieldInput {opacity: 0;}
-	button {visibility:hidden;width:0;border:0;}
-	
+	.UrlField--IsEmpty .UrlFragment-Wrapper, .UrlField--HasEditText .UrlFragment-Wrapper{
+    opacity: 1;}
+	.UrlFragment-Wrapper {min-width: fit-content;position: relative;}
+    input#urlFieldInput {opacity: 0;position:absolute;}
+	.UrlField:hover {input#urlFieldInput{cursor:pointer;} background-color: rgba(230, 234, 241, 0.25);border-radius: var(--radiusHalf);}
 }
-.UrlFragment--Lowlight.UrlFragment-HostFragment-Subdomain {color: var(--HighlightColor);}
 .BookmarkButton--Active {background: transparent;}
-button.vivaldi {width: 34px;}
+button.vivaldi {width: 34px !important;margin:0 0 0 var(--browserborder)  !important;padding:0 !important;}
 button.vivaldi span.expand-arrow {display: none;}
 .mainbar {
 	background-color: var(--colorTabBar);
 	border-bottom: unset !important;
 }
-.UrlBar-AddressField.button-textonly {height: 28px;}
 /* Url text on center */
 .UrlField {justify-content: center;}
 input#urlFieldInput {text-align:center;}
@@ -78,7 +84,7 @@ input#urlFieldInput {text-align:center;}
 }
 #browser:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar.toolbar-visible > div:nth-child(5)[class="button-toolbar toolbar-spacer"],
 #browser:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar.toolbar-visible > div:nth-child(5)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
-	min-width: calc(var(--leftbarwidth) - 34px - 56px - 34px)
+	min-width: calc(var(--leftbarwidth) - 34px - 34px - 34px - var(--browserborder))
 }
 /* left tab bar */
 #tabs-container {
@@ -93,6 +99,7 @@ input#urlFieldInput {text-align:center;}
 	max-width: var(--leftbarwidth);
 	height: calc(100% - var(--browserborder) + 1px) !important;
 	overflow: hidden;
+	z-index:1;
 }
 #browser:not(:has(#panels-container.switcher)) .tabbar-wrapper > .tabbar-wrapper{
 	box-shadow: var(--colorTabBar) 0 calc(var(--leftbarwidth) * 1.5);
@@ -106,33 +113,49 @@ input#urlFieldInput {text-align:center;}
 	padding: 0 !important;
 }
 /* button pin tab */
-.tab-position.is-pinned .tab {background-color: var(--colorImageBgAlphaHeavy, var(--colorBgAlphaHeavier)); }
-.tab-position span.title {color: var(--colorFg);}
-.tab-position.is-pinned,
-#tabs-container > .resize > .tab-strip .tab-yield-space {
-	min-width: calc(var(--biggertab) - 4%);
-	max-width: 32%;
-	flex: 1 1 32%;
-	margin: .5% 0;
-	transform: unset !important;
-	position: relative;
-}
-.tab-strip > span:first-child > .tab-position.is-pinned,
-.tab-strip > span:nth-child(2) > .tab-position.is-pinned {
-	max-width: unset;
-}
+.tab-position.is-pinned .tab {background-color: rgba(230,234,241,0.15);max-height:var(--PinnedTab);}
+.tab-position span.title {color: var(--colorFg);} 
 .tab-strip {
 	display: flex;
 	flex-wrap: wrap;
 	align-content: flex-start;
 	column-gap: 2%;
 }
-#tabs-container .tab-position.is-pinned .tab-header .title {
-    display: none;
+.resize:not(:has(.tab-position.is-pinned)) {
+	max-height: calc(100% - 28px) !important;
 }
-.tab-position.is-pinned .tab-header {
-    justify-content: center;
-    padding: unset;
+.resize:has(.tab-position.is-pinned) {
+	.tab-position.is-pinned {position: fixed;height: var(--PinnedTab);}
+	.tab-position.is-pinned .tab-header {justify-content: center;padding: unset;flex-basis: var(--PinnedTab) !important;}
+	.tab-position.is-pinned .tab-header .title {display: none;}
+	/* Flexible pinned Tab width */
+	&:has(span:nth-of-type(2) > .tab-position.is-pinned):not(:has(span:nth-of-type(3) > .tab-position.is-pinned)) {
+		.tab-position.is-pinned {width: calc((var(--PinnedWidth)) * 0.49) !important;}
+		span:nth-of-type(2) > .tab-position.is-pinned {translate: calc(var(--PinnedWidth) * 0.51) !important;}}
+	&:has(span:nth-of-type(3) > .tab-position.is-pinned) {
+		.tab-position.is-pinned {width: calc((var(--PinnedWidth)) * 0.32) !important;}
+		span:nth-of-type(3n-1) > .tab-position.is-pinned {translate: calc(var(--PinnedWidth) * 0.34) !important;}
+		span:nth-of-type(3n-0) > .tab-position.is-pinned {translate: calc(var(--PinnedWidth) * 0.68) !important;}}
+	/* Init tab column counter */
+	&:not(:has(span:nth-of-type(4) > .tab-position.is-pinned)) {--TabColumn: 1;}
+	&:has(span:nth-of-type(4) > .tab-position.is-pinned):not(:has(span:nth-of-type(7) > .tab-position.is-pinned)) {--TabColumn: 2;}
+	&:has(span:nth-of-type(7) > .tab-position.is-pinned):not(:has(span:nth-of-type(10) > .tab-position.is-pinned)) {--TabColumn: 3;}
+	&:has(span:nth-of-type(10) > .tab-position.is-pinned):not(:has(span:nth-of-type(13) > .tab-position.is-pinned)) {--TabColumn: 4;}
+	max-height: calc(100% - 3px * calc(var(--TabColumn) - 1) - 28px - var(--PinnedTab) * var(--TabColumn)) !important;
+	top: calc(3px * calc(var(--TabColumn) - 1) + var(--PinnedTab) * var(--TabColumn));
+	span:nth-of-type(-n+3) > .tab-position.is-pinned {
+		transform: translateY(calc(-3px * calc(var(--TabColumn) - 1) - var(--PinnedTab) * calc(var(--TabColumn) - 0) - var(--browserborder))) !important;}
+	span:nth-of-type(n+4):nth-of-type(-n+6) > .tab-position.is-pinned {
+		transform: translateY(calc(-3px * calc(var(--TabColumn) - 2)  - var(--PinnedTab) * calc(var(--TabColumn) - 1) - var(--browserborder))) !important;}
+	span:nth-of-type(n+7):nth-of-type(-n+9) > .tab-position.is-pinned {
+		transform: translateY(calc(-3px * calc(var(--TabColumn) - 3)  - var(--PinnedTab) * calc(var(--TabColumn) - 2) - var(--browserborder))) !important;}
+	span:nth-of-type(n+10):nth-of-type(-n+12) > .tab-position.is-pinned {
+		transform: translateY(calc(-3px * calc(var(--TabColumn) - 4)  - var(--PinnedTab) * calc(var(--TabColumn) - 3) - var(--browserborder))) !important;}
+	/* Temp fix for order -1*/
+	&:has(.sync-and-trash-container .newtab) {
+		.sync-and-trash-container {order: -1; .newtab {width: 100%;z-index:2;}}
+		.tab-position.is-pinned{z-index:1 !important; .tab {transform: translateY(calc(0px - var(--biggertab))) !important;}}
+	}
 }
 #tabs-container > .resize > div > .separator {
     position: relative;
@@ -148,12 +171,10 @@ input#urlFieldInput {text-align:center;}
 	display: none;
 }
 /* bigger tab */
-.tab-position .tab .tab-header {
-    flex-basis: var(--biggertab) !important;
-}
-.tab-position:not(.is-pinned) .tab .tab-header > .favicon {min-width: 28px;}
+.tab-position:not(.is-pinned) .tab .tab-header {flex-basis: var(--biggertab) !important;}
+.tab-position:not(.is-pinned) .tab .tab-header > .favicon {min-width: 26px !important;}
 .tab-position:not(.is-pinned) .tab .tab-header > .title {padding:0;}
-#tabs-container .tab-position:not(.accordion-toggle-arrow) {
+#tabs-container .tab-position:not(.accordion-toggle-arrow):not(.is-pinned) {
 	height: var(--biggertab) !important;
 	.tab {max-height: var(--biggertab) !important;}
 }
@@ -161,7 +182,7 @@ input#urlFieldInput {text-align:center;}
 /* not pinned tab audio button */
 /* .tab-position:not(.is-pinned) .tab-audio {top: 12px !important;} */
 .tab-position:not(.is-pinned) {
-	.tab-audio {position: relative !important;top: 0 !important;order: 0;margin-right:5px;color:var(--colorFg);}
+	.tab-audio {position: relative !important;top: 0 !important;order: 0;margin-left: 0px;margin-right: 6px;color:var(--colorFg);width:18px;height:18px;}
 	.title{position: relative !important;order: 1;}
 	.close{position: relative !important;order: 1;}
 	.favicon{transform:unset !important;}
@@ -175,7 +196,6 @@ input#urlFieldInput {text-align:center;}
 .button-toolbar.newtab {
 	left: unset !important;
 	top: unset !important;
-	margin-left: 0 !important;
 	height: var(--biggertab);
 	max-width: calc(var(--leftbarwidth) - var(--browserborder) - var(--browserborder));
 	button.ToolbarButton-Button[title="Open a New Tab"] {height: var(--biggertab);}
@@ -187,29 +207,17 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {
     font-size: 14px;
 }
 /* rubbish bin */
-.resize {
-	max-height: calc(100% - 28px) !important;
+.button-toolbar.toggle-trash {
+	position: fixed;
+	left: var(--browserborder);
+	bottom: var(--browserborder);
+	button {min-height: 28px !important;}
 }
-#main:has(.sync-and-trash-container > .newtab) {
-	.button-toolbar.toggle-trash {
-		position: fixed;
-		left: var(--browserborder);
-		bottom: var(--browserborder);
-		button {min-height: 28px !important;}
-	}
-}
-#main:not(:has(.sync-and-trash-container > .newtab)) {
-	.sync-and-trash-container {
-		justify-content:flex-start !important;
-		margin: 0 !important;
-		position: fixed;
-		bottom: var(--browserborder);
-		button {min-height: 28px !important;}
-	}
-}
-#main:has(.synced-tabs-button) {
-	.synced-tabs-button {transform:translateX(16px);}
-	.bookmark-bar .observer {transform:translateX(-16px);}
+.button-toolbar.synced-tabs-button {
+	position: fixed;
+	left: calc(var(--browserborder) + 28px);
+	bottom: var(--browserborder);
+	button {min-height: 28px !important;}
 }
 /* workspace icononly */
 .separator-wsbutton {display: none;}
@@ -223,6 +231,7 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {
 	z-index: 5;
 	background-color: transparent !important;
 	justify-content: center;
+	box-shadow: unset !important;
 	button.ToolbarButton-Button[title="Workspaces"] {min-width: 32px;margin: 0px !important;}
 }
 .button-toolbar.workspace-popup.tabbar-workspace-button button:hover {
@@ -231,134 +240,81 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {
 .tabbar-workspace-button > button > .button-title,  .tabbar-workspace-button > button > .button-toolbar-menu-indicator {
 	display: none;
 }
-#browser:has(.WorkspacePopup) .ToolbarButtonPopup-DefaultStyles {
-	top: unset !important;
-	bottom: calc(var(--browserborder) + 34px) !important;
+#browser:has(.WorkspacePopup) {
+	.ToolbarButtonPopup-DefaultStyles {
+		top: unset !important;
+		bottom: calc(var(--browserborder) + 34px) !important;}
+	.button-popup-pos-below:before {
+		top: unset;
+		bottom: -12px;
+		transform: rotate(180deg);}
 }
-#browser:has(.WorkspacePopup) .button-popup-pos-below:before {
-	top: unset;
-	bottom: -12px;
-	transform: rotate(180deg);
-}
-.bookmarkbarItem.chevron {
-	margin-left: -3px !important;
-}
+/* Bookmarks */
+#main:has(.synced-tabs-button) .bookmark-bar{
+	left: calc(var(--browserborder) + 64px);
+	width: calc(var(--leftbarwidth) - var(--browserborder) - var(--browserborder) - 96px);}
+#main:not(:has(.synced-tabs-button)) .bookmark-bar{
+	left: calc(var(--browserborder) + 32px);
+    width: calc(var(--leftbarwidth) - var(--browserborder) - var(--browserborder) - 64px);}
 .bookmark-bar {
-	left: calc(var(--leftbarwidth) / 2 - 16px);
-	height: 28px !important;
-	position: fixed;
-	min-width: 32px;
-	max-width: 32px;
-	bottom: calc(var(--browserborder) - 1px);
-	border: unset;
-	visibility: collapse;
-	z-index: 2;
-}
-.bookmark-bar .observer button {
-	visibility: visible;
-}
-.bookmark-bar .observer .bookmarkbarItem {
-    background: var(--colorTabBar) !important;
-	width: 32px;
-    justify-content: center;
-	background-color: transparent !important;
-}
-.bookmarkbarItem > svg > path {
-	d: path("M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z")
+	position: absolute;
+    height: 28px !important;
+	overflow: hidden;
+    z-index: 3;
+	background: transparent !important;
+	border: 0  !important;	
+	bottom: var(--browserborder);
+	.observer {padding: 0;justify-content: center;}
+	button {padding: 0 3px;gap:0;visibility: visible;}
+	.bookmarkbarItem {background-color: transparent !important;}
 }
 /* floating tabs using panel toggle*/
 #browser:has(.switcher):not(.toolbar-edit-mode) {
-	.tabbar-wrapper > .tabbar-wrapper, .bookmarkbarItem.chevron, .tabbar-workspace-button {
-		transition-duration: 300ms !important;
+	.tabbar-wrapper > .tabbar-wrapper, .bookmark-bar, .tabbar-workspace-button {
+		transition-duration: 200ms !important;
 		transition-property: left, right, opacity !important;
-		transition-delay: 300ms !important;
+		transition-delay: 200ms !important;
 	}
-	.tabbar-wrapper > .tabbar-wrapper, .bookmarkbarItem.chevron:not(.highlighted) {
+	.tabbar-wrapper > .tabbar-wrapper {
 		left: calc(var(--browserborder) - var(--leftbarwidth));
 		z-index: 1;
 		opacity: 0;
 	}
+	.bookmark-bar:has(.bookmarkbarItem:not(.highlighted)) {
+		left: calc(var(--browserborder) + 32px - var(--leftbarwidth));
+		opacity: 0;
+	}
 	.tabbar-workspace-button {
 		opacity: 0;
-	}/*
-	.toolbar-statusbar {
-		left: calc(32px + var(--browserborder) - var(--leftbarwidth));
-		color: transparent;
-		transition-duration: 300ms !important;
-		transition-property: left, color !important;
-		transition-delay: 300ms !important;
-	}*/
+	}
 }
-#browser:has(.switcher) .tabbar-wrapper > .tabbar-wrapper:hover,
-#browser:has(.switcher):has(.WorkspacePopup) .tabbar-wrapper > .tabbar-wrapper,
-#browser:has(.switcher):has(.bookmarkbarItem.chevron.highlighted) .tabbar-wrapper > .tabbar-wrapper,
-#browser:has(.switcher):has(.toolbar-statusbar:hover) .tabbar-wrapper > .tabbar-wrapper,
-#browser:has(.switcher):has(.download-popout) .tabbar-wrapper > .tabbar-wrapper,
-#browser:has(.switcher):has(.tabbar-wrapper > .tabbar-wrapper:hover) .bookmarkbarItem.chevron,
-#browser:has(.switcher):has(.WorkspacePopup) .bookmarkbarItem.chevron,
-#browser:has(.switcher) .bookmarkbarItem.chevron.highlighted,
-#browser:has(.switcher):has(.toolbar-statusbar:hover) .bookmarkbarItem.chevron,
-#browser:has(.switcher):has(.download-popout) .bookmarkbarItem.chevron{
-	left: 0 !important;
-	opacity: 1 !important;
-	transition-delay: 0ms !important;
-}
-#browser:has(.switcher):has(.tabbar-wrapper > .tabbar-wrapper:hover) .tabbar-workspace-button,
-#browser:has(.switcher):has(.WorkspacePopup) .tabbar-workspace-button,
-#browser:has(.switcher):has(.bookmarkbarItem.chevron.highlighted) .tabbar-workspace-button,
-#browser:has(.switcher):has(.toolbar-statusbar:hover) .tabbar-workspace-button,
-#browser:has(.switcher):has(.download-popout) .tabbar-workspace-button{
-	opacity: 1 !important;
-	transition-delay: 0ms !important;
-}
-/*
-#browser:has(.switcher):has(.tabbar-wrapper > .tabbar-wrapper:hover) .toolbar-statusbar,
-#browser:has(.switcher):has(.WorkspacePopup) .toolbar-statusbar,
-#browser:has(.switcher):has(.bookmarkbarItem.chevron.highlighted) .toolbar-statusbar,
-#browser:has(.switcher) .toolbar-statusbar:hover,
-#browser:has(.switcher):has(.download-popout) .toolbar-statusbar {
-	left: calc(var(--browserborder) + 32px) !important;
-	color: var(--colorFg) !important;
-	transition-delay: 0ms !important;
+#browser:has(.switcher) {
+	&:has(.bookmark-bar:hover),
+	&:has(.tabbar-wrapper > .tabbar-wrapper:hover),
+	&:has(.WorkspacePopup),
+	&:has(.bookmarkbarItem.highlighted),
+	&:has(.toolbar-statusbar:hover),
+	&:has(.download-popout)
+	{
+		.tabbar-wrapper > .tabbar-wrapper{
+			left: 0 !important;
+			opacity: 1 !important;
+			transition-delay: 0ms !important;}
+		.bookmark-bar {
+			left: calc(var(--browserborder) + 32px);
+			opacity: 1 !important;
+			transition-delay: 0ms !important;}
+		.tabbar-workspace-button {
+			opacity: 1 !important;
+			transition-delay: 0ms !important;}
+	}
 }
 /* bottom bar */
-/* Hide Status Bar too, if u need status info just put it there */
-#browser:not(.toolbar-edit-mode) .toolbar-statusbar {
-	position: absolute;
-	bottom: var(--browserborder);
-	width: 0;
-	/* width: calc(var(--leftbarwidth) - 60px - var(--browserborder) - var(--browserborder)); */
-}
-.toolbar-statusbar {
-	left: calc(32px + var(--browserborder));
-}
-
-#browser:not(.toolbar-edit-mode):not(:has(#panels-container.switcher)) .button-textonly.StatusInfo {
-	left: calc(var(--leftbarwidth));
-	width: calc(100% - var(--leftbarwidth) - var(--browserborder));
-	bottom: var(--browserborder);
-	position: fixed;
-	visibility: collapse;
-}
-#browser:not(.toolbar-edit-mode):has(#panels-container.switcher) .button-textonly.StatusInfo {
-	left: var(--browserborder);
-	width: calc(100% - var(--browserborder) * 2);
-	bottom: var(--browserborder);
-	position: fixed;
-	visibility: collapse;
-}
-#browser:not(.toolbar-edit-mode) .button-textonly.StatusInfo {
-	justify-content: center;
-	font-size: 12px;
-	z-index: -1;
-}
-.StatusInfo-Content {
-	padding: 2px;
-	background: var(--colorBg);
-	border-radius: var(--radiusHalf);
-	visibility: visible;
-	color: var(--colorFg) !important;
-	pointer-events: none;
+/* StatusInfo */
+.StatusInfo {
+	bottom: var(--browserborder) !important;
+    padding-left: var(--leftbarwidth) !important;
+	.StatusInfo-Content {border-radius: var(--radiusHalf) !important;}
 }
 /* CurvedFrame.css */
 #browser:not(.fullscreen) #webpage-stack {
@@ -367,30 +323,6 @@ button.ToolbarButton-Button[title="Open a New Tab"]:after {
 	border-radius: var(--radiusHalf);
 	margin-bottom: var(--browserborder);
 	margin-right: var(--browserborder);
-}
-#browser:not(.fullscreen) #webpage-stack::before {
-    content: '';
-    position: absolute;
-    width: var(--radiusHalf);
-    height: var(--radiusHalf);
-    background-color: var(--colorTabBar);
-    -webkit-mask-image: radial-gradient(circle at 0 0, rgba(0, 0, 0, 0) 70%, #000 73%);
-    transform: rotate(180deg);
-    z-index: 1;
-}
-
-#browser:not(.fullscreen) #webpage-stack::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: var(--radiusHalf);
-    height: var(--radiusHalf);
-    background-color: var(--colorTabBar);
-    -webkit-mask-image: radial-gradient(circle at 0 0, rgba(0, 0, 0, 0) 70%, #000 73%);
-    transform: rotate(-90deg);
-    z-index: 1;
-    top: 0;
-    right: 0;
 }
 #browser:not(.fullscreen):has(#panels-container.switcher) #webpage-stack {
 	margin-left: calc(var(--browserborder) - var(--leftbarwidth));
@@ -404,7 +336,6 @@ span.button-icon {
 	background-color: unset !important;
 }
 
-
 /* right bar */
 /* no panels */
-#panels-container {display: none;}
+#panels-container {display:none;}
