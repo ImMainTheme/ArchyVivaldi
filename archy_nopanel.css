@@ -45,12 +45,17 @@
 	.inner > .tabbar-wrapper {margin-top: var(--browserborder);}
 }
 
-#browser:not(.fullscreen) .mainbar > *,
-.mainbar .window-buttongroup.on-mainbar,
-.mainbar .window-buttongroup.on-mainbar > button{
+#browser.win:not(.fullscreen) .mainbar > *,
+.mainbar .window-buttongroup.on-mainbar{
     min-height: 34px !important;
 	max-height: 34px !important;
 	height: 34px !important;
+	scale: 1 !important;
+}
+#browser.mac:not(.fullscreen) .mainbar > * {
+    min-height: 43px !important;
+	max-height: 43px !important;
+	height: 43px !important;
 	scale: 1 !important;
 }
 span.UrlFragment--Lowlight.UrlFragment-Link {
@@ -82,9 +87,14 @@ input#urlFieldInput {text-align:center;}
 #browser:has(.switcher):not(.toolbar-edit-mode) .mainbar > .toolbar.toolbar-visible > div:nth-child(5)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
 	max-width: 0px;
 }
-#browser:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar.toolbar-visible > div:nth-child(5)[class="button-toolbar toolbar-spacer"],
-#browser:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar.toolbar-visible > div:nth-child(5)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
+#browser.win:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar.toolbar-visible > div:nth-child(5)[class="button-toolbar toolbar-spacer"],
+#browser.win:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar.toolbar-visible > div:nth-child(5)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
 	min-width: calc(var(--leftbarwidth) - 34px - 34px - 34px - var(--browserborder))
+}
+#browser.mac:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar.toolbar-visible > div:nth-child(5)[class="button-toolbar toolbar-spacer"],
+#browser.mac:not(:has(.switcher)):not(.toolbar-edit-mode) .mainbar > .toolbar.toolbar-visible > div:nth-child(5)[class="button-toolbar toolbar-spacer button-disabled-preview"]{
+	min-width: calc(var(--leftbarwidth) - 34px - 34px - 34px - var(--browserborder) - 75px);
+	max-width: calc(var(--leftbarwidth) - 34px - 34px - 34px - var(--browserborder) - 75px);
 }
 /* left tab bar */
 #tabs-container {
