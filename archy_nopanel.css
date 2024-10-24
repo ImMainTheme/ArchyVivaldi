@@ -138,6 +138,10 @@ input#urlFieldInput {text-align:center;}
 		}
 		.tab-position:not(.is-pinned), .newtab, .separator {grid-column: 1 / -1;min-width: 100%;}
 		grid-template-columns: repeat(3, minmax(var(--biggertab), auto)) !important;  
+		.tab-wrapper {
+			max-height: unset !important;
+			margin: 0 !important;
+		}
 	}
 	#tabs-tabbar-container > button,
 	#tabs-container > button {
